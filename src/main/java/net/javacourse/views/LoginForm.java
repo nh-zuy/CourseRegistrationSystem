@@ -29,6 +29,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.JPasswordField;
+import javax.swing.JProgressBar;
 
 public class LoginForm extends JFrame {
 
@@ -43,6 +44,7 @@ public class LoginForm extends JFrame {
 	private JButton btnLogin;
 	private JButton btnCancel;
 
+	private JProgressBar bar;
 
 	/**
 	 * Constructor

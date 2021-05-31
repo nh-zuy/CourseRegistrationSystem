@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 24 May 2021, 17:03:10 by Hibernate Tools 5.4.30.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 May 2021, 22:09:14 by Hibernate Tools 5.4.30.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="course_registration" dynamic-insert="false" dynamic-update="false" mutable="true" name="net.javacourse.entities.Previleges" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="previleges">
         <id name="id" type="java.lang.Integer">
             <column name="id"/>
             <generator class="identity"/>
         </id>
-        <many-to-one class="net.javacourse.entities.Accounts" embed-xml="true" fetch="select" insert="true" name="accounts" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <property generated="never" lazy="false" name="accId" optimistic-lock="true" type="int" unique="false">
             <column name="acc_id" not-null="true"/>
-        </many-to-one>
+        </property>
         <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
             <column length="32" name="name" not-null="true"/>
         </property>

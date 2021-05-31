@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 24 May 2021, 17:03:10 by Hibernate Tools 5.4.30.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 May 2021, 22:09:14 by Hibernate Tools 5.4.30.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="course_registration" dynamic-insert="false" dynamic-update="false" mutable="true" name="net.javacourse.entities.Semesters" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="semesters">
         <id name="semId" type="java.lang.Integer">
@@ -18,6 +18,12 @@
         <property generated="never" lazy="false" name="endDay" optimistic-lock="true" type="timestamp" unique="false">
             <column length="19" name="end_day" not-null="true"/>
         </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="currentSems" optimistic-lock="true" sort="unsorted" table="current_sem">
+            <key on-delete="noaction">
+                <column name="sem_id" not-null="true"/>
+            </key>
+            <one-to-many class="net.javacourse.entities.CurrentSem" embed-xml="true" not-found="exception"/>
+        </set>
         <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="studentses" optimistic-lock="true" sort="unsorted" table="students">
             <key on-delete="noaction">
                 <column name="semester" not-null="true"/>

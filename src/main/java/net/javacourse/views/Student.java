@@ -13,8 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
-import net.javacourse.models.AbstractModel;
-import net.javacourse.models.StudentModel;
+import net.javacourse.entities.Students;
+import net.javacourse.models.Model;
 import net.javacourse.settings.Size;
 
 import javax.swing.JLabel;
@@ -35,7 +35,8 @@ public class Student extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	/* Model */
-	private AbstractModel _model;
+	private Model _model;
+	private Students _account;
 
 	/* Current selection */
 	private JButton _choice;
@@ -62,10 +63,10 @@ public class Student extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Student(AbstractModel model) {
+	public Student(Students account) {
 		/* Load setting infor */
-		this._model = model;
 		this._choice = btnDashboard;
+		this._account = account;
 		this.initialView();
 		this.setEventButton();
 		this.setHoverButton();

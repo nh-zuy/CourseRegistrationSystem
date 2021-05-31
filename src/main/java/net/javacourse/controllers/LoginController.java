@@ -1,31 +1,37 @@
 package net.javacourse.controllers;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
+import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
-import net.javacourse.models.AbstractModel;
-import net.javacourse.models.AccountModel;
-import net.javacourse.models.StudentModel;
+import net.javacourse.entities.Students;
+import net.javacourse.entities.Trainers;
+import net.javacourse.models.LoginModel;
+import net.javacourse.models.Model;
+import net.javacourse.models.StudentsModel;
+import net.javacourse.models.TrainersModel;
 import net.javacourse.views.LoginForm;
 
 public class LoginController {
 	private LoginForm _view;
-	private AbstractModel _model;
-	private boolean _status;
 	
 	/**
 	 * Constructor
 	 */
 	public LoginController() {
 		_view = new LoginForm();
-		_model = new AccountModel();
-		_status = false;
-		
+	}
+	
+	/**
+	 * Running application
+	 */
+	public void run() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -56,38 +62,29 @@ public class LoginController {
 			} else if (password.isEmpty()) {
 				_view.getErrorPw().setText("Please fill all the blank !");
 			} else {
-				String dbUn = "1";
-				String dbPw = "1";
+				LoginModel model = new LoginModel();
+				String id = model.validate(username, password);
 				
-				if (!username.equals(dbUn)) {
-					_view.getErrorUn().setText("Incorrect!");
-				} else if (!password.equals(dbPw)) {
-					_view.getErrorPw().setText("Incorrect");
-				} else {	
-//					try {
-//						TimeUnit.SECONDS.sleep(2);
-//					} catch (InterruptedException e1) {
-//						// TODO Auto-generated catch block
-//						e1.printStackTrace();
-//					};
+				if (id == null) {
+					_view.getErrorUn().setText("Incorrect !");
+				} else {
+					StudentsModel studentModel = new StudentsModel();
+					Students student = studentModel.get(id);
+					
+					if (student != null) {
+						new StudentController(student);
+					} else {
+						TrainersModel trainerModel = new TrainersModel();
+						Trainers admin = trainerModel.get(id);
+						
+						new AdminController(admin);
+					};
 					
 					_view.dispose();
 					_view = null;
-					new AdminController();
-				};
-				
-				if (username.equals("2") && password.equals("2")) {	
-//					try {
-//						TimeUnit.SECONDS.sleep(2);
-//					} catch (InterruptedException e1) {
-//						// TODO Auto-generated catch block
-//						e1.printStackTrace();
-//					};
 					
-					_view.dispose();
-					_view = null;
-					new StudentController();
-				};
+					
+				}
 			};
 		});
 	}

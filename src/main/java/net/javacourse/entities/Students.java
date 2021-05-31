@@ -1,5 +1,5 @@
 package net.javacourse.entities;
-// Generated 24 May 2021, 17:03:10 by Hibernate Tools 5.4.30.Final
+// Generated 28 May 2021, 22:09:13 by Hibernate Tools 5.4.30.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,40 +12,48 @@ public class Students implements java.io.Serializable {
 	private String studentId;
 	private Classes classes;
 	private Semesters semesters;
+	private String username;
+	private String password;
 	private String fullname;
+	private byte sex;
 	private String citizenId;
 	private String email;
 	private String address;
 	private String telephone;
-	private Set accountses = new HashSet(0);
 	private Set studieses = new HashSet(0);
 
 	public Students() {
 	}
 
-	public Students(String studentId, Classes classes, Semesters semesters, String fullname, String citizenId,
-			String email, String address, String telephone) {
+	public Students(String studentId, Classes classes, Semesters semesters, String username, String password,
+			String fullname, byte sex, String citizenId, String email, String address, String telephone) {
 		this.studentId = studentId;
 		this.classes = classes;
 		this.semesters = semesters;
+		this.username = username;
+		this.password = password;
 		this.fullname = fullname;
+		this.sex = sex;
 		this.citizenId = citizenId;
 		this.email = email;
 		this.address = address;
 		this.telephone = telephone;
 	}
 
-	public Students(String studentId, Classes classes, Semesters semesters, String fullname, String citizenId,
-			String email, String address, String telephone, Set accountses, Set studieses) {
+	public Students(String studentId, Classes classes, Semesters semesters, String username, String password,
+			String fullname, byte sex, String citizenId, String email, String address, String telephone,
+			Set studieses) {
 		this.studentId = studentId;
 		this.classes = classes;
 		this.semesters = semesters;
+		this.username = username;
+		this.password = password;
 		this.fullname = fullname;
+		this.sex = sex;
 		this.citizenId = citizenId;
 		this.email = email;
 		this.address = address;
 		this.telephone = telephone;
-		this.accountses = accountses;
 		this.studieses = studieses;
 	}
 
@@ -73,12 +81,36 @@ public class Students implements java.io.Serializable {
 		this.semesters = semesters;
 	}
 
+	public String getUsername() {
+		return this.username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getFullname() {
 		return this.fullname;
 	}
 
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
+	}
+
+	public byte getSex() {
+		return this.sex;
+	}
+
+	public void setSex(byte sex) {
+		this.sex = sex;
 	}
 
 	public String getCitizenId() {
@@ -111,14 +143,6 @@ public class Students implements java.io.Serializable {
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
-	}
-
-	public Set getAccountses() {
-		return this.accountses;
-	}
-
-	public void setAccountses(Set accountses) {
-		this.accountses = accountses;
 	}
 
 	public Set getStudieses() {

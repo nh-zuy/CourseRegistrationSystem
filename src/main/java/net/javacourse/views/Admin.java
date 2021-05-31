@@ -13,7 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
-import net.javacourse.models.AbstractModel;
+import net.javacourse.entities.Trainers;
+import net.javacourse.models.Model;
 import net.javacourse.settings.Size;
 
 import javax.swing.JLabel;
@@ -22,6 +23,8 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class Admin extends JFrame {
@@ -32,7 +35,8 @@ public class Admin extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	/* Model */
-	private AbstractModel _model;
+	private Model _model;
+	private Trainers _account;
 
 	/* Current selection */
 	private JButton _choice;
@@ -43,7 +47,7 @@ public class Admin extends JFrame {
 	private JButton btnCourse;
 	private JButton btnSemester;
 	private JButton btnClass;
-	private JButton btnProfile;
+	private JButton btnAccount;
 	private JButton btnLogout;
 	private JPanel user;
 	private JPanel notification;
@@ -56,14 +60,17 @@ public class Admin extends JFrame {
 	private JPanel panel_1;
 	private JLabel lblNotices;
 	
+	/* Task */
+	private JButton btnProfileSetting;
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public Admin(AbstractModel model) {
+	public Admin(Trainers account) {
 		/* Load setting infor */
-		this._model = model;
 		this._choice = btnDashboard;
+		this._account = account;
 		this.initialView();
 		this.setEventButton();
 		this.setHoverButton();
@@ -74,7 +81,7 @@ public class Admin extends JFrame {
 		/**
 		 *  Common view 
 		 **/
-		setBounds(250, 100, Size.WIDTH_APP, Size.HEIGHT_APP);
+		setBounds(250, 20, Size.WIDTH_APP, Size.HEIGHT_APP);
 		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout());
 		setContentPane(contentPane);
@@ -103,7 +110,7 @@ public class Admin extends JFrame {
 		btnCourse.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
 		btnCourse.setBorder(null);
 		btnCourse.setBackground(new Color(23, 33, 53));
-		btnCourse.setBounds(0, 151, 150, 53);
+		btnCourse.setBounds(0, 218, 150, 53);
 		nav.add(btnCourse);
 		
 		btnSemester = new JButton("Semester");
@@ -112,17 +119,17 @@ public class Admin extends JFrame {
 		btnSemester.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
 		btnSemester.setBorder(null);
 		btnSemester.setBackground(new Color(23, 33, 53));
-		btnSemester.setBounds(0, 226, 150, 53);
+		btnSemester.setBounds(0, 152, 150, 53);
 		nav.add(btnSemester);
 		
-		btnProfile = new JButton("Profile");
-		btnProfile.setForeground(Color.WHITE);
-		btnProfile.setFocusPainted(false);
-		btnProfile.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
-		btnProfile.setBorder(null);
-		btnProfile.setBackground(new Color(23, 33, 53));
-		btnProfile.setBounds(0, 356, 150, 54);
-		nav.add(btnProfile);
+		btnAccount = new JButton("Account");
+		btnAccount.setForeground(Color.WHITE);
+		btnAccount.setFocusPainted(false);
+		btnAccount.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
+		btnAccount.setBorder(null);
+		btnAccount.setBackground(new Color(23, 33, 53));
+		btnAccount.setBounds(0, 351, 150, 54);
+		nav.add(btnAccount);
 		
 		btnLogout = new JButton("Logout");
 		btnLogout.setForeground(Color.WHITE);
@@ -130,7 +137,7 @@ public class Admin extends JFrame {
 		btnLogout.setFocusPainted(false);
 		btnLogout.setBorder(null);
 		btnLogout.setBackground(new Color(23, 33, 53));
-		btnLogout.setBounds(0, 422, 150, 53);
+		btnLogout.setBounds(0, 418, 150, 53);
 		nav.add(btnLogout);
 		
 		btnClass = new JButton("Class");
@@ -139,7 +146,7 @@ public class Admin extends JFrame {
 		btnClass.setFocusPainted(false);
 		btnClass.setBorder(null);
 		btnClass.setBackground(new Color(23, 33, 53));
-		btnClass.setBounds(0, 291, 150, 54);
+		btnClass.setBounds(0, 284, 150, 54);
 		nav.add(btnClass);
 
 		/**
@@ -225,11 +232,11 @@ public class Admin extends JFrame {
 		avatar.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-male-user-64.png")));
 		user.add(avatar);
 		
-		lblHiAdmin = new JLabel("Hi, admin <3");
+		lblHiAdmin = new JLabel("Hello, admin @");
+		lblHiAdmin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHiAdmin.setForeground(Color.WHITE);
 		lblHiAdmin.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-		lblHiAdmin.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHiAdmin.setBounds(12, 86, 103, 22);
+		lblHiAdmin.setBounds(0, 86, 142, 22);
 		user.add(lblHiAdmin);
 		
 		JButton btnExit = new JButton("");
@@ -247,7 +254,7 @@ public class Admin extends JFrame {
 		user.add(panel);
 		
 		notification = new JPanel();
-		notification.setPreferredSize(new Dimension(200, 200));
+		notification.setPreferredSize(new Dimension(200, 340));
 		notification.setBackground(new Color(67, 119, 202));
 		status.add(notification, BorderLayout.SOUTH);
 		notification.setLayout(null);
@@ -262,6 +269,7 @@ public class Admin extends JFrame {
 		/* Task zone */
 		task = new JPanel();
 		task.setBackground(new Color(81,126,211));
+		task.setPreferredSize(new Dimension(50, 50));
 		status.add(task, BorderLayout.CENTER);
 		task.setLayout(null);
 		
@@ -285,7 +293,7 @@ public class Admin extends JFrame {
 		btnClasses.setBounds(12, 109, 121, 31);
 		task.add(btnClasses);
 		
-		JButton btnProfileSetting = new JButton("Profile");
+		btnProfileSetting = new JButton("Profile");
 		btnProfileSetting.setHorizontalAlignment(SwingConstants.LEADING);
 		btnProfileSetting.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-admin-settings-male-32.png")));
 		btnProfileSetting.setForeground(Color.WHITE);
@@ -328,21 +336,43 @@ public class Admin extends JFrame {
         });
 	}
 	
+	/**
+	 * Set event for button
+	 * 1. Menu button
+	 * 2. Task button
+	 */
 	private void setEventButton() {
-		ArrayList<JButton> buttons = new ArrayList<JButton>();
-		buttons.add(btnDashboard);
-		buttons.add(btnCourse);
-		buttons.add(btnSemester);
-		buttons.add(btnClass);
-		buttons.add(btnProfile);
-		buttons.add(btnLogout);
+		/* Menu button */
+		btnAccount.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new Account(this._account));
+			workspace.validate();
+			workspace.repaint();
+		});
 		
-		for (JButton btn: buttons) {
-			btn.addActionListener(e -> {
-				_choice = btn;
-				setSelection();
-			});
-		};
+		/* Task button */
+		btnProfileSetting.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new Profile(this._account));
+			workspace.validate();
+			workspace.repaint();
+		});
+		
+		/* Semester button */
+		btnSemester.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new Semester());
+			workspace.validate();
+			workspace.repaint();
+		});
+		
+		/* Course button */
+		btnCourse.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new Course());
+			workspace.validate();
+			workspace.repaint();
+		});
 	}
 	
 	private void setHoverButton() {
@@ -351,14 +381,15 @@ public class Admin extends JFrame {
 		buttons.add(btnCourse);
 		buttons.add(btnSemester);
 		buttons.add(btnClass);
-		buttons.add(btnProfile);
+		buttons.add(btnAccount);
 		buttons.add(btnLogout);
 		
 		for (JButton btn: buttons) {
 			btn.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					
+					_choice = btn;
+					setSelection();
 				}
 				@Override
 				public void mouseEntered(MouseEvent arg0) {
@@ -401,7 +432,7 @@ public class Admin extends JFrame {
 		buttons.add(btnCourse);
 		buttons.add(btnSemester);
 		buttons.add(btnClass);
-		buttons.add(btnProfile);
+		buttons.add(btnAccount);
 		buttons.add(btnLogout);
 		
 		for (JButton btn: buttons) {

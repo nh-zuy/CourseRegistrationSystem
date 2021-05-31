@@ -14,8 +14,9 @@
         <mapping resource="net/javacourse/entities/Previleges.hbm.xml"/>
         <mapping resource="net/javacourse/entities/Schedules.hbm.xml"/>
         <mapping resource="net/javacourse/entities/Students.hbm.xml"/>
-        <mapping resource="net/javacourse/entities/Accounts.hbm.xml"/>
+        <mapping resource="net/javacourse/entities/CurrentSem.hbm.xml"/>
         <mapping resource="net/javacourse/entities/Timetable.hbm.xml"/>
+        <mapping resource="net/javacourse/entities/Trainers.hbm.xml"/>
         <mapping resource="net/javacourse/entities/Classes.hbm.xml"/>
         <mapping resource="net/javacourse/entities/Studies.hbm.xml"/>
         <mapping resource="net/javacourse/entities/Semesters.hbm.xml"/>
