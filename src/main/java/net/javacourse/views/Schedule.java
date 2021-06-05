@@ -70,7 +70,6 @@ public class Schedule extends JPanel {
 	private JPanel header;
 	private JButton btnAdd, btnUpdate, btnDelete;
 	private JLabel message;
-	private JTextField textShift;
 	private JTextField textRoom;
 	private JTextField textSID;
 
@@ -82,6 +81,8 @@ public class Schedule extends JPanel {
 	private JComboBox<String> boxCourse;
 
 	private JComboBox<String> boxDay;
+
+	private JComboBox<String> boxShift;
 
 	
 	/**
@@ -117,7 +118,7 @@ public class Schedule extends JPanel {
 		forminput_1_3.setLayout(null);
 		forminput_1_3.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_3.setBackground(new Color(119, 165, 251));
-		forminput_1_3.setBounds(189, 12, 239, 50);
+		forminput_1_3.setBounds(189, 12, 297, 50);
 		title_1.add(forminput_1_3);
 		
 		JLabel lblClass = new JLabel("Courses");
@@ -128,14 +129,14 @@ public class Schedule extends JPanel {
 		forminput_1_3.add(lblClass);
 		
 		boxCourses = new JComboBox<String>(new DefaultComboBoxModel<String>());
-		boxCourses.setBounds(87, 16, 140, 24);
+		boxCourses.setBounds(87, 16, 198, 24);
 		forminput_1_3.add(boxCourses);
 		
 		JPanel forminput_1_2_1_1 = new JPanel();
 		forminput_1_2_1_1.setLayout(null);
 		forminput_1_2_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_2_1_1.setBounds(440, 12, 280, 50);
+		forminput_1_2_1_1.setBounds(498, 12, 222, 50);
 		title_1.add(forminput_1_2_1_1);
 		
 		JLabel Name_1 = new JLabel("ID");
@@ -151,7 +152,7 @@ public class Schedule extends JPanel {
 		textSID.setFont(new Font("Arial", Font.BOLD, 20));
 		textSID.setColumns(10);
 		textSID.setBorder(null);
-		textSID.setBounds(62, 15, 194, 26);
+		textSID.setBounds(62, 15, 148, 26);
 		forminput_1_2_1_1.add(textSID);
 		
 		btnFilter = new JButton("Filter");
@@ -199,7 +200,7 @@ public class Schedule extends JPanel {
 		forminput_1_5_1.setLayout(null);
 		forminput_1_5_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_5_1.setBackground(new Color(119, 165, 251));
-		forminput_1_5_1.setBounds(173, 100, 165, 50);
+		forminput_1_5_1.setBounds(173, 131, 165, 50);
 		input.add(forminput_1_5_1);
 		
 		JLabel Email = new JLabel("Day");
@@ -217,7 +218,7 @@ public class Schedule extends JPanel {
 		forminput_1_5_1_2.setLayout(null);
 		forminput_1_5_1_2.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_5_1_2.setBackground(new Color(119, 165, 251));
-		forminput_1_5_1_2.setBounds(350, 100, 156, 50);
+		forminput_1_5_1_2.setBounds(350, 131, 156, 50);
 		input.add(forminput_1_5_1_2);
 		
 		JLabel lblTelephone = new JLabel("Shift");
@@ -227,20 +228,15 @@ public class Schedule extends JPanel {
 		lblTelephone.setBounds(0, 3, 59, 50);
 		forminput_1_5_1_2.add(lblTelephone);
 		
-		textShift = new JTextField();
-		textShift.setText("0");
-		textShift.setHorizontalAlignment(SwingConstants.CENTER);
-		textShift.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		textShift.setColumns(10);
-		textShift.setBorder(null);
-		textShift.setBounds(62, 12, 84, 26);
-		forminput_1_5_1_2.add(textShift);
+		boxShift = new JComboBox<String>(new DefaultComboBoxModel<String>());
+		boxShift.setBounds(61, 13, 83, 24);
+		forminput_1_5_1_2.add(boxShift);
 		
 		JPanel forminput_1_5_1_3 = new JPanel();
 		forminput_1_5_1_3.setLayout(null);
 		forminput_1_5_1_3.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_5_1_3.setBackground(new Color(119, 165, 251));
-		forminput_1_5_1_3.setBounds(523, 100, 168, 50);
+		forminput_1_5_1_3.setBounds(523, 131, 168, 50);
 		input.add(forminput_1_5_1_3);
 		
 		JLabel lblCitizenId = new JLabel("Room");
@@ -263,7 +259,7 @@ public class Schedule extends JPanel {
 		forminput_1_2_1_1_1.setLayout(null);
 		forminput_1_2_1_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2_1_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_2_1_1_1.setBounds(173, 38, 151, 50);
+		forminput_1_2_1_1_1.setBounds(173, 69, 151, 50);
 		input.add(forminput_1_2_1_1_1);
 		
 		JLabel Name_1_1 = new JLabel("ID");
@@ -286,7 +282,7 @@ public class Schedule extends JPanel {
 		forminput_1_3_1.setLayout(null);
 		forminput_1_3_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_3_1.setBackground(new Color(119, 165, 251));
-		forminput_1_3_1.setBounds(350, 38, 340, 50);
+		forminput_1_3_1.setBounds(350, 69, 340, 50);
 		input.add(forminput_1_3_1);
 		
 		JLabel lblCourse = new JLabel("Course");
@@ -300,6 +296,14 @@ public class Schedule extends JPanel {
 		boxCourse.setBounds(87, 16, 241, 24);
 		forminput_1_3_1.add(boxCourse);
 		
+		JLabel lblNewLabel_1 = new JLabel("Manage Course");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setForeground(Color.RED);
+		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 35));
+		lblNewLabel_1.setBackground(Color.WHITE);
+		lblNewLabel_1.setBounds(225, 0, 437, 57);
+		input.add(lblNewLabel_1);
+		
 		/* Manipulating data */
 		this.resetTextField();
 		this.setData();
@@ -312,7 +316,6 @@ public class Schedule extends JPanel {
 	private void resetTextField() {
 		textID.setEditable(false);
 		textID.setText("");
-		textShift.setText("");
 		textRoom.setText("");
 		
 		this.validate();
@@ -346,7 +349,11 @@ public class Schedule extends JPanel {
 		};
 
 		table = new JTable(data, headers);
+		table.setRowHeight(28);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		table.getColumnModel().getColumn(0).setPreferredWidth(20);
+		table.getColumnModel().getColumn(1).setPreferredWidth(200);
+		table.getColumnModel().getColumn(3).setPreferredWidth(20);
 		table.getTableHeader().setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
@@ -359,7 +366,7 @@ public class Schedule extends JPanel {
 		JScrollPane sp = new JScrollPane(table);
 		header.add(sp, BorderLayout.CENTER);
 		
-		/* Data table */
+		/* Courses combobox */
 		CoursesModel courseModel = new CoursesModel();
 		List<Courses> courses = courseModel.getAll();
 		DefaultComboBoxModel<String> box1 = (DefaultComboBoxModel<String>) boxCourses.getModel();
@@ -378,6 +385,13 @@ public class Schedule extends JPanel {
 		box3.addElement("Friday");
 		box3.addElement("Saturday");
 		box3.addElement("Sunday");
+		
+		/* Shift combobox */
+		DefaultComboBoxModel<String> box4 = (DefaultComboBoxModel<String>) boxShift.getModel();
+		box4.addElement("1");
+		box4.addElement("2");
+		box4.addElement("3");
+		box4.addElement("4");
 	}
 	
 	/**
@@ -397,7 +411,6 @@ public class Schedule extends JPanel {
 			tableModel.setRowCount(0);
 			
 			if (tCourse.equals("All")) {
-				System.out.println("1");
 				for (Schedules schedule: schedules) {
 					row.add(schedule.getId().toString());
 					row.add(schedule.getCourses().getName() + " (" + schedule.getCourses().getCode() + ")");
@@ -433,7 +446,7 @@ public class Schedule extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				String day = (String)boxDay.getSelectedItem().toString();
-				String tShift = textShift.getText().trim();
+				String tShift = boxShift.getSelectedItem().toString().trim();
 				String room = textRoom.getText().trim();
 				String tCourse = (String)boxCourse.getSelectedItem();
 				
@@ -502,7 +515,7 @@ public class Schedule extends JPanel {
 			
 			String id = textID.getText().trim();
 			String day = (String)boxDay.getSelectedItem().toString();
-			String tShift = textShift.getText().trim();
+			String tShift = boxShift.getSelectedItem().toString().trim();
 			String room = textRoom.getText().trim();
 			String tCourse = (String)boxCourse.getSelectedItem();
 			String code = Helper.parseCode(tCourse);
@@ -602,7 +615,7 @@ public class Schedule extends JPanel {
 				textID.setText(id);
 				boxCourse.setSelectedItem(course);
 				boxDay.setSelectedItem(day);
-				textShift.setText(shift);
+				boxShift.setSelectedItem(shift);
 				textRoom.setText(room);
 			}
 

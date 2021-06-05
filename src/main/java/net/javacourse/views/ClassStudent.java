@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import net.javacourse.entities.Classes;
 import net.javacourse.entities.Students;
 import net.javacourse.entities.Trainers;
 import net.javacourse.models.ClassesModel;
@@ -44,6 +45,10 @@ public class ClassStudent extends JPanel {
 	/* View component */
 	private JTable table;
 	private JPanel header;
+	private JPanel title;
+	private JLabel lblNewLabel;
+	private JLabel name;
+	private JLabel total;
 
 	/**
 	 * Create the panel.
@@ -60,6 +65,32 @@ public class ClassStudent extends JPanel {
 		form.setBackground(new Color(119, 165, 251));
 		add(form, BorderLayout.CENTER);
 		form.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		title = new JPanel();
+		title.setLayout(null);
+		title.setPreferredSize(new Dimension(1000, 100));
+		title.setBackground(new Color(119, 165, 251));
+		form.add(title);
+		
+		lblNewLabel = new JLabel("My Class");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 35));
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setBounds(266, 0, 437, 47);
+		title.add(lblNewLabel);
+		
+		name = new JLabel("Name: ");
+		name.setForeground(Color.RED);
+		name.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		name.setBounds(318, 59, 175, 33);
+		title.add(name);
+		
+		total = new JLabel("Total: ");
+		total.setForeground(Color.RED);
+		total.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		total.setBounds(505, 59, 175, 33);
+		title.add(total);
 
 		header = new JPanel();
 		header.setBorder(new LineBorder(Color.WHITE, 5));
@@ -73,9 +104,19 @@ public class ClassStudent extends JPanel {
 		/* Three of button */
 
 		/* Manipulating data */
-		this.resetTextField();
-		this.setData();
-		this.setEventButton();
+		Classes myClass = this._account.getClasses();
+		if (myClass != null) {
+			this.resetTextField();
+			this.setData();
+			this.setEventButton();
+		} else {
+			name.setText("");
+			total.setText("");
+			lblNewLabel.setText("Class Not Found");
+			lblNewLabel.setForeground(Color.RED);
+			JOptionPane.showMessageDialog(new JPanel(), "Not in any class!", "Error", JOptionPane.ERROR_MESSAGE);	
+		}
+		
 	}
 
 	/**
@@ -90,6 +131,16 @@ public class ClassStudent extends JPanel {
 	 * Show information account
 	 */
 	private void setData() {
+		Classes myClass = this._account.getClasses();
+		if (myClass != null) {
+			String Name = name.getText();
+			Name = Name + myClass.getName();
+			name.setText(Name);
+			String Total = total.getText();
+			Total = Total + myClass.getTotal();
+			total.setText(Total);
+		};
+		
 		List<Students> students = _model.getAll();
 
 		Vector<Vector<String>> data = new Vector<Vector<String>>();
@@ -115,6 +166,7 @@ public class ClassStudent extends JPanel {
 		}
 
 		table = new JTable(data, headers);
+		table.setRowHeight(28);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getColumnModel().getColumn(0).setPreferredWidth(25);
 		table.getTableHeader().setFont(new Font("Comic Sans MS", Font.PLAIN, 16));

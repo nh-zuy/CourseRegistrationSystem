@@ -314,6 +314,7 @@ public class Semester extends JPanel {
 		};
 
 		table = new JTable(data, headers);
+		table.setRowHeight(28);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getColumnModel().getColumn(0).setPreferredWidth(21);
 		table.getColumnModel().getColumn(1).setPreferredWidth(10);

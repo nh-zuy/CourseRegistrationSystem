@@ -103,14 +103,13 @@ public class Account extends JPanel {
 		forminput_1_2.setLayout(null);
 		forminput_1_2.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2.setBackground(new Color(119, 165, 251));
-		forminput_1_2.setBounds(173, 0, 269, 50);
+		forminput_1_2.setBounds(204, 0, 238, 50);
 		input.add(forminput_1_2);
 		
 		JLabel lblId = new JLabel("ID");
-		lblId.setHorizontalAlignment(SwingConstants.CENTER);
 		lblId.setForeground(Color.BLACK);
 		lblId.setFont(new Font("Chilanka", Font.BOLD, 20));
-		lblId.setBounds(0, 2, 81, 50);
+		lblId.setBounds(0, 2, 34, 50);
 		forminput_1_2.add(lblId);
 		
 		textID = new JTextField();
@@ -119,14 +118,14 @@ public class Account extends JPanel {
 		textID.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textID.setColumns(10);
 		textID.setBorder(null);
-		textID.setBounds(88, 12, 169, 26);
+		textID.setBounds(35, 12, 191, 26);
 		forminput_1_2.add(textID);
 		
 		JPanel forminput_1 = new JPanel();
 		forminput_1.setLayout(null);
 		forminput_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1.setBackground(new Color(119, 165, 251));
-		forminput_1.setBounds(173, 69, 269, 50);
+		forminput_1.setBounds(204, 69, 289, 50);
 		input.add(forminput_1);
 		
 		JLabel lblName = new JLabel("Username");
@@ -142,14 +141,14 @@ public class Account extends JPanel {
 		textUsername.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textUsername.setColumns(10);
 		textUsername.setBorder(null);
-		textUsername.setBounds(88, 12, 169, 26);
+		textUsername.setBounds(98, 13, 177, 26);
 		forminput_1.add(textUsername);
 		
 		JPanel forminput_1_1 = new JPanel();
 		forminput_1_1.setLayout(null);
 		forminput_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_1.setBounds(442, 69, 269, 50);
+		forminput_1_1.setBounds(204, 131, 289, 50);
 		input.add(forminput_1_1);
 		
 		JLabel lblPassword = new JLabel("Password");
@@ -165,29 +164,28 @@ public class Account extends JPanel {
 		textPassword.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textPassword.setColumns(10);
 		textPassword.setBorder(null);
-		textPassword.setBounds(80, 11, 177, 26);
+		textPassword.setBounds(98, 11, 177, 26);
 		forminput_1_1.add(textPassword);
 		
 		JPanel forminput_1_1_1 = new JPanel();
 		forminput_1_1_1.setLayout(null);
 		forminput_1_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_1_1.setBounds(0, 131, 711, 50);
+		forminput_1_1_1.setBounds(0, 196, 711, 50);
 		input.add(forminput_1_1_1);
 		
 		/* Role: Admin/Student */
 		JLabel lblRole = new JLabel("Role");
-		lblRole.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRole.setForeground(Color.BLACK);
 		lblRole.setFont(new Font("Chilanka", Font.BOLD, 20));
-		lblRole.setBounds(174, 4, 74, 50);
+		lblRole.setBounds(204, 4, 49, 50);
 		forminput_1_1_1.add(lblRole);
 		
 		chAdmin = new JCheckBox("Admin");
 		chAdmin.setForeground(Color.YELLOW);
 		chAdmin.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		chAdmin.setHorizontalAlignment(SwingConstants.CENTER);
-		chAdmin.setBounds(262, 0, 101, 50);
+		chAdmin.setBounds(259, 0, 101, 50);
 		chAdmin.setFocusPainted(false);
 		chAdmin.setBackground(new Color(119, 165, 251));
 		chAdmin.addActionListener(e -> {
@@ -204,7 +202,7 @@ public class Account extends JPanel {
 		chStudent.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		chStudent.setFocusPainted(false);
 		chStudent.setBackground(new Color(119, 165, 251));
-		chStudent.setBounds(367, 0, 126, 50);
+		chStudent.setBounds(353, 0, 126, 50);
 		chStudent.addActionListener(e -> {
 			if (chAdmin.isSelected()) {
 				chAdmin.setSelected(false);
@@ -323,6 +321,7 @@ public class Account extends JPanel {
 		};
 		
 		table = new JTable(data, headers);
+		table.setRowHeight(28);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getColumnModel().getColumn(0).setPreferredWidth(20);
 		table.getTableHeader().setFont(new Font("Comic Sans MS", Font.PLAIN, 16));

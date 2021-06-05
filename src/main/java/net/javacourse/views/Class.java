@@ -95,19 +95,19 @@ public class Class extends JPanel {
 		title_1.setBackground(new Color(119, 165, 251));
 		form.add(title_1);
 		
-		JLabel lblNewLabel_1 = new JLabel("Manage Course");
+		JLabel lblNewLabel_1 = new JLabel("Manage Class");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 35));
 		lblNewLabel_1.setBackground(Color.WHITE);
-		lblNewLabel_1.setBounds(311, 0, 363, 47);
+		lblNewLabel_1.setBounds(311, 0, 363, 43);
 		title_1.add(lblNewLabel_1);
 		
 		message = new JLabel("* Select row to handle data !");
 		message.setHorizontalAlignment(SwingConstants.CENTER);
 		message.setForeground(Color.BLACK);
 		message.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		message.setBounds(376, 47, 229, 23);
+		message.setBounds(376, 38, 229, 32);
 		title_1.add(message);
 		
 		JPanel input = new JPanel();
@@ -120,7 +120,7 @@ public class Class extends JPanel {
 		forminput_1_2.setLayout(null);
 		forminput_1_2.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2.setBackground(new Color(119, 165, 251));
-		forminput_1_2.setBounds(319, 0, 270, 50);
+		forminput_1_2.setBounds(173, 0, 270, 50);
 		input.add(forminput_1_2);
 		
 		JLabel lblId = new JLabel("Class ID");
@@ -217,7 +217,7 @@ public class Class extends JPanel {
 		forminput_1_2_1.setLayout(null);
 		forminput_1_2_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2_1.setBackground(new Color(119, 165, 251));
-		forminput_1_2_1.setBounds(278, 69, 352, 50);
+		forminput_1_2_1.setBounds(173, 69, 352, 50);
 		input.add(forminput_1_2_1);
 		
 		JLabel Name = new JLabel("Class Name");
@@ -308,6 +308,7 @@ public class Class extends JPanel {
 		};
 
 		table = new JTable(data, headers);
+		table.setRowHeight(28);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getColumnModel().getColumn(0).setPreferredWidth(21);
 		table.getColumnModel().getColumn(1).setPreferredWidth(80);

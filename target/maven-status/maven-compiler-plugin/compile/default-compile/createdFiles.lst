@@ -65,8 +65,10 @@ net/javacourse/views/Class$4.class
 net/javacourse/views/Schedule$1.class
 net/javacourse/helpers/Helper.class
 net/javacourse/views/Portal$2.class
+net/javacourse/views/CourseStudent$1.class
 net/javacourse/models/LoginModel.class
 net/javacourse/entities/Schedules.class
+net/javacourse/views/CourseStudent.class
 net/javacourse/entities/Trainers.class
 net/javacourse/views/Admin$3.class
 net/javacourse/entities/Previleges.class

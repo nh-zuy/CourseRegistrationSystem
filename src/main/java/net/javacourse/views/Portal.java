@@ -62,8 +62,9 @@ public class Portal extends JPanel {
 	/* View component */
 	private JTable table;
 	private JPanel header;
-
+	private JPanel title;
 	private JButton btnRegister;
+	private JLabel time;
 
 	/**
 	 * Create the panel.
@@ -83,17 +84,39 @@ public class Portal extends JPanel {
 		
 		JPanel title_1 = new JPanel();
 		title_1.setLayout(null);
-		title_1.setPreferredSize(new Dimension(1000, 70));
+		title_1.setPreferredSize(new Dimension(1000, 100));
 		title_1.setBackground(new Color(119, 165, 251));
 		form.add(title_1);
 		
+		JLabel lblNewLabel_1 = new JLabel("Course Registration Time");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 35));
+		lblNewLabel_1.setBackground(Color.WHITE);
+		lblNewLabel_1.setBounds(273, 12, 437, 47);
+		title_1.add(lblNewLabel_1);
+		
+		time = new JLabel("Time register: ");
+		time.setHorizontalAlignment(SwingConstants.CENTER);
+		time.setForeground(Color.RED);
+		time.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		time.setBounds(278, 61, 427, 33);
+		title_1.add(time);
+		
+		title = new JPanel();
+		title.setLayout(null);
+		title.setPreferredSize(new Dimension(1000, 70));
+		title.setBackground(new Color(119, 165, 251));
+		form.add(title);
+		
 		btnRegister = new JButton("Register");
+		btnRegister.setFocusPainted(false);
 		btnRegister.setForeground(Color.WHITE);
-		btnRegister.setBackground(SystemColor.desktop);
-		btnRegister.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnRegister.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnRegister.setBounds(422, 12, 138, 46);
-		title_1.add(btnRegister);
+		btnRegister.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnRegister.setBackground(SystemColor.desktop);
+		btnRegister.setBounds(422, 0, 138, 46);
+		title.add(btnRegister);
 
 		header = new JPanel();
 		header.setBorder(new LineBorder(Color.WHITE, 5));
@@ -122,6 +145,12 @@ public class Portal extends JPanel {
 			if (start.compareTo(now) > 0 || end.compareTo(now) < 0) {
 				JOptionPane.showMessageDialog(new JPanel(), "No in course registration time!", "Error", JOptionPane.ERROR_MESSAGE);	
 			} else {
+				/* Time remaining */
+				SimpleDateFormat dfm = new SimpleDateFormat("dd/MM/yyyy");
+				String quote = time.getText().trim();
+				quote = quote + dfm.format(start) + " - " + dfm.format(end);
+				time.setText(quote);
+						
 				/* Manipulating data */
 				this.resetTextField();
 				this.setData();
@@ -143,6 +172,8 @@ public class Portal extends JPanel {
 	 * Show information account
 	 */
 	private void setData() {
+		
+		/* Data in table */
 		SchedulesModel scheduleModel = new SchedulesModel();
 		List<Schedules> schedules = scheduleModel.getAll();
 		this._studies = _model.getAll();
@@ -206,7 +237,9 @@ public class Portal extends JPanel {
 		};
 		
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		table.getColumnModel().getColumn(0).setPreferredWidth(21);
+		table.setRowHeight(30);
+		table.getColumnModel().getColumn(0).setPreferredWidth(20);
+		table.getColumnModel().getColumn(1).setPreferredWidth(180);
 		table.getTableHeader().setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
@@ -273,6 +306,12 @@ public class Portal extends JPanel {
 						_model.add(data);
 						this._studies.clear();
 						this._studies = _model.getAll();
+						c.clear();
+						for (Studies study: this._studies) {
+							if (study.getStudents().getStudentId().equals(this._account.getStudentId())) {
+								c.add(study.getSchedules().getId());
+							};
+						};
 					}
 				};
 			};

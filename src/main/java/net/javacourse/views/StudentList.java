@@ -120,7 +120,7 @@ public class StudentList extends JPanel {
 		forminput_1_3.setLayout(null);
 		forminput_1_3.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_3.setBackground(new Color(119, 165, 251));
-		forminput_1_3.setBounds(189, 12, 239, 50);
+		forminput_1_3.setBounds(173, 12, 268, 50);
 		title_1.add(forminput_1_3);
 		
 		JLabel lblClass = new JLabel("Class");
@@ -131,14 +131,14 @@ public class StudentList extends JPanel {
 		forminput_1_3.add(lblClass);
 		
 		boxClasses = new JComboBox<String>(new DefaultComboBoxModel<String>());
-		boxClasses.setBounds(69, 16, 158, 24);
+		boxClasses.setBounds(69, 16, 187, 24);
 		forminput_1_3.add(boxClasses);
 		
 		JPanel forminput_1_2_1_1 = new JPanel();
 		forminput_1_2_1_1.setLayout(null);
 		forminput_1_2_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_2_1_1.setBounds(440, 12, 280, 50);
+		forminput_1_2_1_1.setBounds(465, 12, 255, 50);
 		title_1.add(forminput_1_2_1_1);
 		
 		JLabel Name_1 = new JLabel("ID");
@@ -154,7 +154,7 @@ public class StudentList extends JPanel {
 		textSID.setFont(new Font("Arial", Font.BOLD, 20));
 		textSID.setColumns(10);
 		textSID.setBorder(null);
-		textSID.setBounds(62, 15, 194, 26);
+		textSID.setBounds(62, 15, 181, 26);
 		forminput_1_2_1_1.add(textSID);
 		
 		btnFilter = new JButton("Filter");
@@ -191,7 +191,7 @@ public class StudentList extends JPanel {
 		textID.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		textID.setColumns(10);
 		textID.setBorder(null);
-		textID.setBounds(108, 2, 150, 50);
+		textID.setBounds(110, 2, 150, 50);
 		forminput_1_2.add(textID);
 		
 		/* Three of button */
@@ -241,7 +241,7 @@ public class StudentList extends JPanel {
 		textName.setFont(new Font("Arial", Font.BOLD, 20));
 		textName.setColumns(10);
 		textName.setBorder(null);
-		textName.setBounds(101, 2, 230, 50);
+		textName.setBounds(110, 2, 221, 50);
 		forminput_1_2_1.add(textName);
 		
 		JPanel forminput_1_5_1 = new JPanel();
@@ -290,7 +290,7 @@ public class StudentList extends JPanel {
 		forminput_1_5_1_1.setLayout(null);
 		forminput_1_5_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_5_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_5_1_1.setBounds(517, 60, 171, 69);
+		forminput_1_5_1_1.setBounds(522, 60, 171, 69);
 		input.add(forminput_1_5_1_1);
 		
 		JLabel lblNewLabel = new JLabel("Sex");
@@ -389,7 +389,7 @@ public class StudentList extends JPanel {
 		textAddress.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textAddress.setColumns(10);
 		textAddress.setBorder(null);
-		textAddress.setBounds(90, 12, 177, 26);
+		textAddress.setBounds(93, 12, 177, 26);
 		forminput_1_5_1_3_1.add(textAddress);
 		
 		/* Manipulating data */
@@ -408,6 +408,8 @@ public class StudentList extends JPanel {
 		textAddress.setText("");
 		textTelephone.setText("");
 		textCitizen.setText("");
+		chMale.setSelected(false);
+		chFemale.setSelected(false);
 		
 		this.validate();
 		this.repaint();
@@ -441,6 +443,7 @@ public class StudentList extends JPanel {
 			byte sex = student.getSex();
 			if (sex == 0) {
 				row.add("Male");
+				
 			} else {
 				row.add("Female");
 			};
@@ -452,12 +455,19 @@ public class StudentList extends JPanel {
 		};
 
 		table = new JTable(data, headers);
+		table.setRowHeight(28);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		table.getColumnModel().getColumn(5).setPreferredWidth(40);
+		table.getColumnModel().getColumn(0).setPreferredWidth(50);
+		table.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table.getColumnModel().getColumn(2).setPreferredWidth(17);
+		table.getColumnModel().getColumn(3).setPreferredWidth(10);
+		
 		table.getTableHeader().setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		table.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-		table.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+		
 		table.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
 		table.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);
 		table.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
@@ -680,6 +690,13 @@ public class StudentList extends JPanel {
 						tableModel.setValueAt(id, table.getSelectedRow(), 0);
 						tableModel.setValueAt(fullname, table.getSelectedRow(), 1);
 						tableModel.setValueAt(tClass, table.getSelectedRow(), 2);
+						if (sex== 0) {
+							chMale.setSelected(true);
+							chFemale.setSelected(false);
+						} else {
+							chMale.setSelected(false);
+							chFemale.setSelected(true);
+						};
 						tableModel.setValueAt((sex == 0) ? "Male" : "Female", table.getSelectedRow(), 3);
 						tableModel.setValueAt(email, table.getSelectedRow(), 4);
 						tableModel.setValueAt(telephone, table.getSelectedRow(), 5);
@@ -689,6 +706,8 @@ public class StudentList extends JPanel {
 						JOptionPane.showMessageDialog(new JPanel(), "ERROR update!", "Error", JOptionPane.ERROR_MESSAGE);
 					}
 				}
+				
+				resetTextField();
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -755,6 +774,8 @@ public class StudentList extends JPanel {
 						};
 					};
 				};
+				
+				resetTextField();
 			}
 
 			@Override
@@ -795,7 +816,9 @@ public class StudentList extends JPanel {
 				boxClass.setSelectedItem(classField);
 				if (sexField.equals("Male")) {
 					chMale.setSelected(true);
+					chFemale.setSelected(false);
 				} else {
+					chMale.setSelected(false);
 					chFemale.setSelected(true);
 				};
 				textTelephone.setText(telephoneField);

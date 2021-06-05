@@ -109,7 +109,7 @@ public class Admin extends JFrame {
 		btnDashboard.setFont(new Font("AnjaliOldLipi", Font.BOLD, 16));
 		nav.add(btnDashboard);
 		
-		btnCourse = new JButton("Course");
+		btnCourse = new JButton("Courses");
 		btnCourse.setForeground(Color.WHITE);
 		btnCourse.setFocusPainted(false);
 		btnCourse.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
@@ -118,7 +118,7 @@ public class Admin extends JFrame {
 		btnCourse.setBounds(0, 218, 150, 53);
 		nav.add(btnCourse);
 		
-		btnSemester = new JButton("Semester");
+		btnSemester = new JButton("Semesters");
 		btnSemester.setForeground(Color.WHITE);
 		btnSemester.setFocusPainted(false);
 		btnSemester.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
@@ -127,7 +127,7 @@ public class Admin extends JFrame {
 		btnSemester.setBounds(0, 152, 150, 53);
 		nav.add(btnSemester);
 		
-		btnAccount = new JButton("Account");
+		btnAccount = new JButton("Accounts");
 		btnAccount.setForeground(Color.WHITE);
 		btnAccount.setFocusPainted(false);
 		btnAccount.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
@@ -136,7 +136,7 @@ public class Admin extends JFrame {
 		btnAccount.setBounds(0, 351, 150, 53);
 		nav.add(btnAccount);
 		
-		btnLogout = new JButton("Logout");
+		btnLogout = new JButton("Log out");
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
 		btnLogout.setFocusPainted(false);
@@ -145,7 +145,7 @@ public class Admin extends JFrame {
 		btnLogout.setBounds(0, 418, 150, 53);
 		nav.add(btnLogout);
 		
-		btnStudent = new JButton("Student");
+		btnStudent = new JButton("Students");
 		btnStudent.setForeground(Color.WHITE);
 		btnStudent.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
 		btnStudent.setFocusPainted(false);
@@ -244,18 +244,18 @@ public class Admin extends JFrame {
 		lblHiAdmin.setBounds(0, 86, 142, 22);
 		user.add(lblHiAdmin);
 		
-		btnExit = new JButton("");
+		btnExit = new JButton("Exit");
 		btnExit.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-safe-out-32.png")));
 		btnExit.setForeground(Color.WHITE);
 		btnExit.setBackground(new Color(119, 165, 251));
-		btnExit.setBounds(237, 45, 51, 31);
+		btnExit.setBounds(210, 45, 78, 31);
 		btnExit.setBorder(null);
 		btnExit.setFocusPainted(false);
 		user.add(btnExit);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(230, 32, 6, 55);
+		panel.setBounds(192, 32, 6, 55);
 		user.add(panel);
 		
 		notification = new JPanel();
@@ -278,7 +278,7 @@ public class Admin extends JFrame {
 		status.add(task, BorderLayout.CENTER);
 		task.setLayout(null);
 		
-		btnSchedule = new JButton("Schedule");
+		btnSchedule = new JButton("Schedules");
 		btnSchedule.setHorizontalAlignment(SwingConstants.LEADING);
 		btnSchedule.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-calendar-32.png")));
 		btnSchedule.setForeground(Color.WHITE);
@@ -298,17 +298,17 @@ public class Admin extends JFrame {
 		btnClasses.setBounds(12, 109, 121, 31);
 		task.add(btnClasses);
 		
-		btnProfileSetting = new JButton("Profile");
+		btnProfileSetting = new JButton("My Profile");
 		btnProfileSetting.setHorizontalAlignment(SwingConstants.LEADING);
 		btnProfileSetting.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-admin-settings-male-32.png")));
 		btnProfileSetting.setForeground(Color.WHITE);
 		btnProfileSetting.setFocusPainted(false);
 		btnProfileSetting.setBorder(null);
 		btnProfileSetting.setBackground(new Color(81,126,211));
-		btnProfileSetting.setBounds(174, 41, 114, 31);
+		btnProfileSetting.setBounds(174, 41, 126, 31);
 		task.add(btnProfileSetting);
 		
-		btnSession = new JButton("Session");
+		btnSession = new JButton("Sessions");
 		btnSession.setHorizontalAlignment(SwingConstants.LEADING);
 		btnSession.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-course-assign-32.png")));
 		btnSession.setForeground(Color.WHITE);
@@ -393,7 +393,7 @@ public class Admin extends JFrame {
 		/* Classes button */
 		btnClasses.addActionListener(e -> {
 			workspace.removeAll();
-			workspace.add(new Schedule());
+			workspace.add(new Class());
 			workspace.validate();
 			workspace.repaint();
 		});

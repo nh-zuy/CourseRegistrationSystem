@@ -317,14 +317,14 @@ public class Course extends JPanel {
 		};
 
 		table = new JTable(data, headers);
+		table.setRowHeight(28);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		table.getColumnModel().getColumn(0).setPreferredWidth(21);
-		table.getColumnModel().getColumn(1).setPreferredWidth(80);
+		table.getColumnModel().getColumn(0).setPreferredWidth(40);
+		table.getColumnModel().getColumn(1).setPreferredWidth(200);
 		table.getTableHeader().setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		table.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-		table.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
 		table.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
 		table.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);
 		table.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
