@@ -26,7 +26,8 @@ import javax.swing.border.BevelBorder;
 
 public class Profile extends JPanel {
 	/* Data model */
-	private TrainersModel _model;
+	private TrainersModel _adminModel;
+	private StudentsModel _studentModel;
 	private Trainers _account;
 	
 	/* View component */
@@ -47,8 +48,18 @@ public class Profile extends JPanel {
 	 */
 	public Profile(Trainers account) {
 		this._account = account;
-		this._model = new TrainersModel();
+		this._adminModel = new TrainersModel();
+		this._studentModel = new StudentsModel();
 		
+		this.initialView();
+		
+		/* Manipulating data */
+		this.resetTextField();
+		this.setData();
+		this.setEventButton();
+	}
+	
+	private void initialView() {
 		setBackground(Color.WHITE);
 		setLayout(new BorderLayout(0, 0));
 		
@@ -152,7 +163,7 @@ public class Profile extends JPanel {
 		forminput_3.add(lblFullname);
 		
 		textFullname = new JTextField();
-		textFullname.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		textFullname.setFont(new Font("Arial", Font.BOLD, 16));
 		textFullname.setHorizontalAlignment(SwingConstants.CENTER);
 		textFullname.setColumns(10);
 		textFullname.setBorder(null);
@@ -218,7 +229,7 @@ public class Profile extends JPanel {
 		forminput_5.add(lblAddress);
 		
 		textAddress = new JTextField();
-		textAddress.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		textAddress.setFont(new Font("Arial", Font.BOLD, 16));
 		textAddress.setHorizontalAlignment(SwingConstants.CENTER);
 		textAddress.setColumns(10);
 		textAddress.setBorder(null);
@@ -290,23 +301,18 @@ public class Profile extends JPanel {
 		btnReset.setBackground(Color.RED);
 		btnReset.setBounds(546, 12, 197, 50);
 		forminput_6.add(btnReset);
-		
-		/* Manipulating data */
-		this.resetTextField();
-		this.setData();
-		this.setEventButton();
 	}
 	
 	/**
 	 * Reset data in textfield
 	 */
 	private void resetTextField() {
-		textID.setText("");
-		textUsername.setText("");
-		textPasswd.setText("");
-		textFullname.setText("");
+		textID.setText(this._account.getTrainerId());
+		textUsername.setText(this._account.getUsername());
+		textPasswd.setText(this._account.getPassword());
+		textFullname.setText(this._account.getFullname());
 		textAddress.setText("");
-		textTelephone.setText("");
+		textTelephone.setText(this._account.getTelephone());
 		textEmail.setText("");
 	}
 
@@ -325,8 +331,7 @@ public class Profile extends JPanel {
 		} else {
 			chboxMale.setSelected(false);
 			chckbxFemale.setSelected(true);
-		}
-		;
+		};
 		textTelephone.setText(this._account.getTelephone());
 	}
 	
@@ -342,35 +347,28 @@ public class Profile extends JPanel {
 				String username = textUsername.getText();
 				String password = textPasswd.getText();
 				
-				_account.setUsername(username);
-				_account.setPassword(password);
-				_model.updateById(_account.getTrainerId(), _account);
+				if (_account != null) {
+					_account.setUsername(username);
+					_account.setPassword(password);
+					_adminModel.updateById(_account.getTrainerId(), _account);
+				};
 			}
-
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
 			}
-
 			@Override
 			public void mouseExited(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
 			}
-
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
 			}
-
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
-			
 		});
 		
 		/* Handle mouse on button Reset */
@@ -379,31 +377,23 @@ public class Profile extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				/* Just can reset before update data */
-				
+				resetTextField();
 			}
-
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
 			}
-
 			@Override
 			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub			
 			}
-
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
-
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 			
 		});

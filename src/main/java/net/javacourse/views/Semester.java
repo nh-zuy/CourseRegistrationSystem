@@ -14,8 +14,12 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import net.javacourse.entities.CurrentSem;
 import net.javacourse.entities.Semesters;
+import net.javacourse.models.CurrentSemModel;
 import net.javacourse.models.SemestersModel;
+import net.javacourse.objects.RadiusBorder;
+
 import javax.swing.JCheckBox;
 
 import java.util.Date;
@@ -24,14 +28,18 @@ import java.util.Vector;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 import javax.swing.border.MatteBorder;
+import javax.swing.border.SoftBevelBorder;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
 import com.toedter.calendar.JDateChooser;
 import net.javacourse.helpers.Helper;
@@ -55,6 +63,8 @@ public class Semester extends JPanel {
 	private JDateChooser startDay;
 
 	private JDateChooser endDay;
+
+	private JButton btnSet;
 
 	
 	/**
@@ -111,7 +121,7 @@ public class Semester extends JPanel {
 		forminput_1_2.setLayout(null);
 		forminput_1_2.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2.setBackground(new Color(119, 165, 251));
-		forminput_1_2.setBounds(317, 0, 279, 50);
+		forminput_1_2.setBounds(173, 0, 279, 50);
 		input.add(forminput_1_2);
 		
 		JLabel lblId = new JLabel("Semester ID");
@@ -241,6 +251,15 @@ public class Semester extends JPanel {
 		endDay.setDateFormatString("dd-MM-yyyy");
 		forminput_1_5.add(endDay);
 		
+		btnSet = new JButton("Select Now!");
+		btnSet.setForeground(Color.BLACK);
+		btnSet.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		btnSet.setBackground(Color.ORANGE);
+		btnSet.setBounds(464, 8, 157, 34);
+		btnSet.setFocusPainted(false);
+		btnSet.setBorder(new SoftBevelBorder(BevelBorder.RAISED, Color.WHITE, Color.WHITE, new Color(192, 192, 192), new Color(192, 192, 192)));
+		input.add(btnSet);
+		
 		/* Manipulating data */
 		this.resetTextField();
 		this.setData();
@@ -285,9 +304,10 @@ public class Semester extends JPanel {
 			
 			LocalDateTime start = Helper.toLocalDateTime(sem.getStartDay());
 			LocalDateTime end = Helper.toLocalDateTime(sem.getEndDay());
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 			
-			row.add(start.toString());
-			row.add(end.toString());
+			row.add(start.format(format));
+			row.add(end.format(format));
 
 			data.add(new Vector<String>(row));
 			row.clear();
@@ -315,8 +335,73 @@ public class Semester extends JPanel {
 	 * 
 	 */
 	private void setEventButton() {
-		/* Only one checkbox is selected on time */
+		/* Select default */
+		btnSet.addMouseListener(new MouseListener() {
 
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				if (table.getSelectedRowCount() == 0) {
+					JOptionPane.showMessageDialog(new JPanel(), "Please select one row !", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				};
+				if (table.getSelectedRowCount() > 1) {
+					JOptionPane.showMessageDialog(new JPanel(), "Only one row can be updated on time!", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				};
+				if (table.getRowCount() == 0) {
+					JOptionPane.showMessageDialog(new JPanel(), "Blank table !", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				};
+				
+				String tID = textID.getText().trim();
+				Integer id = Integer.parseInt(tID);
+				String tYear = textYear.getText().trim();
+				int year = Integer.parseInt(tYear);
+				String subname = textSubname.getText().trim();
+				
+				if (tID.isBlank() || tYear.isBlank() || subname.isBlank()) {
+					message.setText("Fill all blank !");
+					message.setForeground(Color.RED);
+					JOptionPane.showMessageDialog(new JPanel(), "Please fill all blank !", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					Semesters semester = _model.find(id);
+					CurrentSemModel model = new CurrentSemModel();
+					CurrentSem currentSem = model.getCurrentSemester();
+					currentSem.setSemesters(semester);
+					currentSem.setYear(year);
+					currentSem.setSubName(subname);
+					model.update(currentSem);
+					
+					JOptionPane.showMessageDialog(new JPanel(), "Semester's current successfully!", "Successfully", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				btnSet.setForeground(Color.WHITE);
+				btnSet.setFont(new Font("Comic Sans MS", Font.BOLD, 22));
+				btnSet.setBounds(464, 8, 160, 50);
+				btnSet.setBorder(new RadiusBorder(Color.white, 2, 16, 16, true));
+			}
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				btnSet.setForeground(Color.BLACK);
+				btnSet.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+				btnSet.setBackground(Color.ORANGE);
+				btnSet.setBounds(464, 8, 157, 34);
+				btnSet.setBorder(new SoftBevelBorder(BevelBorder.RAISED, Color.WHITE, Color.WHITE, new Color(192, 192, 192), new Color(192, 192, 192)));
+			}
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+		});
 		
 		/* Click button */
 		btnAdd.addMouseListener(new MouseListener() {
@@ -347,7 +432,10 @@ public class Semester extends JPanel {
 						/* Add into db */
 						if (insertedID != -1) {
 							DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-							String data[] = {String.valueOf(insertedID), tYear, subname, Helper.toLocalDateTime(start).toString(), Helper.toLocalDateTime(end).toString()};
+							DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+							LocalDateTime startDay = Helper.toLocalDateTime(start);
+							LocalDateTime endDay = Helper.toLocalDateTime(end);
+							String data[] = { String.valueOf(insertedID), tYear, subname, startDay.format(format), endDay.format(format) };
 							tableModel.addRow(data);
 							
 							table.validate();
@@ -359,31 +447,18 @@ public class Semester extends JPanel {
 					}
 				}
 			}
-
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
 			}
-
 			@Override
 			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
 			}
-
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
 			}
-
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
 			}
-			
 		});
 		
 		/* Click button update */
@@ -433,19 +508,20 @@ public class Semester extends JPanel {
 						sem.setEndDay(end);
 						
 						if (_model.updateById(id, sem)) {
+							DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+							
 							tableModel.setValueAt(tID, table.getSelectedRow(), 0);
 							tableModel.setValueAt(tYear, table.getSelectedRow(), 1);
 							tableModel.setValueAt(subname, table.getSelectedRow(), 2);
-							tableModel.setValueAt(Helper.toLocalDateTime(start).toString(), table.getSelectedRow(), 3);
-							tableModel.setValueAt(Helper.toLocalDateTime(end).toString(), table.getSelectedRow(), 4);
+							tableModel.setValueAt(Helper.toLocalDateTime(start).format(format), table.getSelectedRow(), 3);
+							tableModel.setValueAt(Helper.toLocalDateTime(end).format(format), table.getSelectedRow(), 4);
 							
 							JOptionPane.showMessageDialog(new JPanel(), "Update Successfully !", "Update", JOptionPane.INFORMATION_MESSAGE);
 						} else {
 							JOptionPane.showMessageDialog(new JPanel(), "ERROR update !", "Error", JOptionPane.ERROR_MESSAGE);
-						}
-					}
-				}
-				
+						};
+					};
+				};
 			}
 
 			@Override
@@ -497,7 +573,7 @@ public class Semester extends JPanel {
 				Integer id = Integer.parseInt(tID);
 				
 				if (tID.isBlank()) {
-					message.setText("Select a specific account!");
+					message.setText("Select a specific row!");
 					message.setForeground(Color.RED);
 					JOptionPane.showMessageDialog(new JPanel(), "Please select an ID!", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
@@ -569,10 +645,11 @@ public class Semester extends JPanel {
 				textID.setText(idField);
 				textYear.setText(yearField);
 				textSubname.setText(subnameField);
-				LocalDateTime start = LocalDateTime.parse(startField);
-				LocalDateTime end = LocalDateTime.parse(endField);
-				startDay.setDate(Helper.toDate(start));
-				endDay.setDate(Helper.toDate(end));
+				DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+				LocalDateTime start = LocalDateTime.parse(startField, format);
+				LocalDateTime end = LocalDateTime.parse(endField, format);
+				startDay.setDate(Helper.DTtoDate(start));
+				endDay.setDate(Helper.DTtoDate(end));
 				table.validate();
 				table.repaint();
 				

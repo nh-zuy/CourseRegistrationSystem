@@ -2,15 +2,7 @@ package net.javacourse.models;
 // Generated 28 May 2021, 22:10:28 by Hibernate Tools 5.4.30.Final
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.InitialContext;
-import org.hibernate.LockMode;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Example;
-
-import net.javacourse.entities.Students;
 import net.javacourse.entities.Trainers;
 
 /**
@@ -20,7 +12,6 @@ import net.javacourse.entities.Trainers;
  */
 public class TrainersModel extends Model {
 
-	private static final Logger logger = Logger.getLogger(TrainersModel.class.getName());
 
 	public TrainersModel() {
 		super();

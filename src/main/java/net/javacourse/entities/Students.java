@@ -1,5 +1,5 @@
 package net.javacourse.entities;
-// Generated 28 May 2021, 22:09:13 by Hibernate Tools 5.4.30.Final
+// Generated 4 Jun 2021, 21:42:10 by Hibernate Tools 5.4.30.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -25,19 +25,12 @@ public class Students implements java.io.Serializable {
 	public Students() {
 	}
 
-	public Students(String studentId, Classes classes, Semesters semesters, String username, String password,
-			String fullname, byte sex, String citizenId, String email, String address, String telephone) {
+	public Students(String studentId, String username, String password, String fullname, byte sex) {
 		this.studentId = studentId;
-		this.classes = classes;
-		this.semesters = semesters;
 		this.username = username;
 		this.password = password;
 		this.fullname = fullname;
 		this.sex = sex;
-		this.citizenId = citizenId;
-		this.email = email;
-		this.address = address;
-		this.telephone = telephone;
 	}
 
 	public Students(String studentId, Classes classes, Semesters semesters, String username, String password,

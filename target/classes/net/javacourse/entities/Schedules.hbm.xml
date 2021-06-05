@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 28 May 2021, 22:09:14 by Hibernate Tools 5.4.30.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 Jun 2021, 21:42:11 by Hibernate Tools 5.4.30.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="course_registration" dynamic-insert="false" dynamic-update="false" mutable="true" name="net.javacourse.entities.Schedules" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="schedules">
         <id name="id" type="java.lang.Integer">
@@ -18,5 +18,11 @@
         <property generated="never" lazy="false" name="room" optimistic-lock="true" type="string" unique="false">
             <column length="16" name="room" not-null="true"/>
         </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="studieses" optimistic-lock="true" sort="unsorted" table="studies">
+            <key on-delete="noaction">
+                <column name="schedule" not-null="true"/>
+            </key>
+            <one-to-many class="net.javacourse.entities.Studies" embed-xml="true" not-found="exception"/>
+        </set>
     </class>
 </hibernate-mapping>

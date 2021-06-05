@@ -8,23 +8,19 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
-
+import net.javacourse.controllers.LoginController;
 import net.javacourse.entities.Trainers;
-import net.javacourse.models.Model;
 import net.javacourse.settings.Size;
-
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 public class Admin extends JFrame {
@@ -35,7 +31,6 @@ public class Admin extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	/* Model */
-	private Model _model;
 	private Trainers _account;
 
 	/* Current selection */
@@ -46,7 +41,7 @@ public class Admin extends JFrame {
 	private JButton btnDashboard;
 	private JButton btnCourse;
 	private JButton btnSemester;
-	private JButton btnClass;
+	private JButton btnStudent;
 	private JButton btnAccount;
 	private JButton btnLogout;
 	private JPanel user;
@@ -62,15 +57,25 @@ public class Admin extends JFrame {
 	
 	/* Task */
 	private JButton btnProfileSetting;
+
+	private JButton btnExit;
+
+	private JButton btnClasses;
+
+	private JButton btnSchedule;
+
+	private JButton btnSession;
 	
 
 	/**
 	 * Create the frame.
 	 */
 	public Admin(Trainers account) {
-		/* Load setting infor */
+		/* Load setting information */
 		this._choice = btnDashboard;
 		this._account = account;
+		
+		/* Initial view and event */
 		this.initialView();
 		this.setEventButton();
 		this.setHoverButton();
@@ -128,7 +133,7 @@ public class Admin extends JFrame {
 		btnAccount.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
 		btnAccount.setBorder(null);
 		btnAccount.setBackground(new Color(23, 33, 53));
-		btnAccount.setBounds(0, 351, 150, 54);
+		btnAccount.setBounds(0, 351, 150, 53);
 		nav.add(btnAccount);
 		
 		btnLogout = new JButton("Logout");
@@ -140,14 +145,14 @@ public class Admin extends JFrame {
 		btnLogout.setBounds(0, 418, 150, 53);
 		nav.add(btnLogout);
 		
-		btnClass = new JButton("Class");
-		btnClass.setForeground(Color.WHITE);
-		btnClass.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
-		btnClass.setFocusPainted(false);
-		btnClass.setBorder(null);
-		btnClass.setBackground(new Color(23, 33, 53));
-		btnClass.setBounds(0, 284, 150, 54);
-		nav.add(btnClass);
+		btnStudent = new JButton("Student");
+		btnStudent.setForeground(Color.WHITE);
+		btnStudent.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
+		btnStudent.setFocusPainted(false);
+		btnStudent.setBorder(null);
+		btnStudent.setBackground(new Color(23, 33, 53));
+		btnStudent.setBounds(0, 284, 150, 53);
+		nav.add(btnStudent);
 
 		/**
 		 * The top of the frame: Header
@@ -239,7 +244,7 @@ public class Admin extends JFrame {
 		lblHiAdmin.setBounds(0, 86, 142, 22);
 		user.add(lblHiAdmin);
 		
-		JButton btnExit = new JButton("");
+		btnExit = new JButton("");
 		btnExit.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-safe-out-32.png")));
 		btnExit.setForeground(Color.WHITE);
 		btnExit.setBackground(new Color(119, 165, 251));
@@ -273,17 +278,17 @@ public class Admin extends JFrame {
 		status.add(task, BorderLayout.CENTER);
 		task.setLayout(null);
 		
-		JButton btnSemesters = new JButton("Semesters");
-		btnSemesters.setHorizontalAlignment(SwingConstants.LEADING);
-		btnSemesters.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-calendar-32.png")));
-		btnSemesters.setForeground(Color.WHITE);
-		btnSemesters.setFocusPainted(false);
-		btnSemesters.setBorder(null);
-		btnSemesters.setBackground(new Color(81,126,211));
-		btnSemesters.setBounds(12, 41, 121, 31);
-		task.add(btnSemesters);
+		btnSchedule = new JButton("Schedule");
+		btnSchedule.setHorizontalAlignment(SwingConstants.LEADING);
+		btnSchedule.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-calendar-32.png")));
+		btnSchedule.setForeground(Color.WHITE);
+		btnSchedule.setFocusPainted(false);
+		btnSchedule.setBorder(null);
+		btnSchedule.setBackground(new Color(81,126,211));
+		btnSchedule.setBounds(12, 41, 121, 31);
+		task.add(btnSchedule);
 		
-		JButton btnClasses = new JButton("Classes");
+		btnClasses = new JButton("Classes");
 		btnClasses.setHorizontalAlignment(SwingConstants.LEADING);
 		btnClasses.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-study-32.png")));
 		btnClasses.setForeground(Color.WHITE);
@@ -303,15 +308,15 @@ public class Admin extends JFrame {
 		btnProfileSetting.setBounds(174, 41, 114, 31);
 		task.add(btnProfileSetting);
 		
-		JButton btnCourses = new JButton("Courses");
-		btnCourses.setHorizontalAlignment(SwingConstants.LEADING);
-		btnCourses.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-course-assign-32.png")));
-		btnCourses.setForeground(Color.WHITE);
-		btnCourses.setFocusPainted(false);
-		btnCourses.setBorder(null);
-		btnCourses.setBackground(new Color(81,126,211));
-		btnCourses.setBounds(174, 109, 114, 31);
-		task.add(btnCourses);
+		btnSession = new JButton("Session");
+		btnSession.setHorizontalAlignment(SwingConstants.LEADING);
+		btnSession.setIcon(new ImageIcon(Admin.class.getResource("/images/icons8-course-assign-32.png")));
+		btnSession.setForeground(Color.WHITE);
+		btnSession.setFocusPainted(false);
+		btnSession.setBorder(null);
+		btnSession.setBackground(new Color(81,126,211));
+		btnSession.setBounds(174, 109, 114, 31);
+		task.add(btnSession);
 		
 		panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
@@ -326,6 +331,9 @@ public class Admin extends JFrame {
 		workspace.setLayout(new BorderLayout(5, 5));
 	}
 	
+	/**
+	 * 
+	 */
 	private void setCloseApp() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -373,6 +381,58 @@ public class Admin extends JFrame {
 			workspace.validate();
 			workspace.repaint();
 		});
+		
+		/* Class button */
+		btnStudent.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new StudentList());
+			workspace.validate();
+			workspace.repaint();
+		});
+		
+		/* Classes button */
+		btnClasses.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new Schedule());
+			workspace.validate();
+			workspace.repaint();
+		});
+		
+		/* Schedule button */
+		btnSchedule.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new Schedule());
+			workspace.validate();
+			workspace.repaint();
+		});
+		
+		/* Session button */
+		btnSession.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new Session());
+			workspace.validate();
+			workspace.repaint();
+		});
+		
+		/* Logout button */
+		btnLogout.addActionListener(e -> {
+			String[] options = { "Yes", "No" };
+
+			int res = JOptionPane.showOptionDialog(new JPanel(), "Sure Logout?", "Logout",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+			
+			if (res == 0) {
+				dispose();
+				/* Login again or not */
+				new LoginController().run();
+			};
+		});
+		
+		/* Exit */
+		btnExit.addActionListener(e -> {
+			dispose();
+			new LoginController().run();
+		});
 	}
 	
 	private void setHoverButton() {
@@ -380,7 +440,7 @@ public class Admin extends JFrame {
 		buttons.add(btnDashboard);
 		buttons.add(btnCourse);
 		buttons.add(btnSemester);
-		buttons.add(btnClass);
+		buttons.add(btnStudent);
 		buttons.add(btnAccount);
 		buttons.add(btnLogout);
 		
@@ -431,7 +491,7 @@ public class Admin extends JFrame {
 		buttons.add(btnDashboard);
 		buttons.add(btnCourse);
 		buttons.add(btnSemester);
-		buttons.add(btnClass);
+		buttons.add(btnStudent);
 		buttons.add(btnAccount);
 		buttons.add(btnLogout);
 		

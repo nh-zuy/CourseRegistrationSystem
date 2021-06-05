@@ -1,5 +1,5 @@
 package net.javacourse.models;
-// Generated 28 May 2021, 22:10:28 by Hibernate Tools 5.4.30.Final
+// Generated 31 May 2021, 19:58:32 by Hibernate Tools 5.4.30.Final
 
 import java.util.List;
 import java.util.logging.Level;

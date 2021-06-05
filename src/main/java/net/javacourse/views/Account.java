@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import net.javacourse.entities.Students;
 import net.javacourse.entities.Trainers;
 import net.javacourse.models.StudentsModel;
 import net.javacourse.models.TrainersModel;
@@ -130,8 +131,8 @@ public class Account extends JPanel {
 		
 		JLabel lblName = new JLabel("Username");
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblName.setForeground(Color.BLACK);
-		lblName.setFont(new Font("Chilanka", Font.BOLD, 15));
+		lblName.setForeground(Color.YELLOW);
+		lblName.setFont(new Font("Chilanka", Font.BOLD, 18));
 		lblName.setBounds(0, 3, 88, 50);
 		forminput_1.add(lblName);
 		
@@ -153,8 +154,8 @@ public class Account extends JPanel {
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPassword.setForeground(Color.BLACK);
-		lblPassword.setFont(new Font("Chilanka", Font.BOLD, 15));
+		lblPassword.setForeground(Color.YELLOW);
+		lblPassword.setFont(new Font("Chilanka", Font.BOLD, 17));
 		lblPassword.setBounds(0, 2, 81, 50);
 		forminput_1_1.add(lblPassword);
 		
@@ -189,6 +190,12 @@ public class Account extends JPanel {
 		chAdmin.setBounds(262, 0, 101, 50);
 		chAdmin.setFocusPainted(false);
 		chAdmin.setBackground(new Color(119, 165, 251));
+		chAdmin.addActionListener(e -> {
+			if (chStudent.isSelected()) {
+				chStudent.setSelected(false);
+			};
+			chAdmin.setSelected(true);
+		});
 		forminput_1_1_1.add(chAdmin);
 		
 		chStudent = new JCheckBox("Student");
@@ -198,6 +205,12 @@ public class Account extends JPanel {
 		chStudent.setFocusPainted(false);
 		chStudent.setBackground(new Color(119, 165, 251));
 		chStudent.setBounds(367, 0, 126, 50);
+		chStudent.addActionListener(e -> {
+			if (chAdmin.isSelected()) {
+				chAdmin.setSelected(false);
+			};
+			chStudent.setSelected(true);
+		});
 		forminput_1_1_1.add(chStudent);
 		
 		/* Three of button */
@@ -242,7 +255,7 @@ public class Account extends JPanel {
 		textFullname = new JTextField();
 		textFullname.setText("");
 		textFullname.setHorizontalAlignment(SwingConstants.CENTER);
-		textFullname.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		textFullname.setFont(new Font("Arial", Font.BOLD, 16));
 		textFullname.setColumns(10);
 		textFullname.setBorder(null);
 		textFullname.setBounds(81, 11, 176, 26);
@@ -275,8 +288,10 @@ public class Account extends JPanel {
 	 * Show information account
 	 */
 	private void setData() {
-		List<Trainers> accounts = this._model.getAll();
-
+		List<Trainers> admins = this._model.getAll();
+		StudentsModel model = new StudentsModel();
+		List<Students> students = model.getAll();
+		
 		Vector<Vector<String>> data = new Vector<Vector<String>>();
 		Vector<String> row = new Vector<String>();
 		Vector<String> headers = new Vector<String>();
@@ -286,7 +301,7 @@ public class Account extends JPanel {
 		headers.add("Password");
 		headers.add("Type");
 
-		for (Trainers acc : accounts) {
+		for (Trainers acc : admins) {
 			row.add(acc.getTrainerId());
 			row.add(acc.getFullname());
 			row.add(acc.getUsername());
@@ -296,7 +311,17 @@ public class Account extends JPanel {
 			data.add(new Vector<String>(row));
 			row.clear();
 		};
+		for (Students acc : students) {
+			row.add(acc.getStudentId());
+			row.add(acc.getFullname());
+			row.add(acc.getUsername());
+			row.add(acc.getPassword());
+			row.add("Student");
 
+			data.add(new Vector<String>(row));
+			row.clear();
+		};
+		
 		table = new JTable(data, headers);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getColumnModel().getColumn(0).setPreferredWidth(20);
@@ -314,22 +339,6 @@ public class Account extends JPanel {
 	 * 
 	 */
 	private void setEventButton() {
-		/* Only one checkbox is selected on time */
-		chAdmin.addActionListener(e -> {
-			if (chStudent.isSelected()) {
-				chStudent.setSelected(false);
-			};
-			
-			chAdmin.setSelected(true);
-		});
-		chStudent.addActionListener(e -> {
-			if (chAdmin.isSelected()) {
-				chAdmin.setSelected(false);
-			};
-			
-			chStudent.setSelected(true);
-		});
-		
 		/* Click button */
 		btnAdd.addMouseListener(new MouseListener() {
 
@@ -353,18 +362,10 @@ public class Account extends JPanel {
 					message.setForeground(Color.RED);
 					JOptionPane.showMessageDialog(new JPanel(), "Please fill all blank !", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
-					String[] options = {"Yes", "No"};
-					
-					int res = JOptionPane.showOptionDialog(
-							new JPanel(),
-							"Are you sure adding new Admin ?",
-							"New Admin",
-							JOptionPane.YES_NO_OPTION,
-							JOptionPane.QUESTION_MESSAGE,
-							null,
-							options,
-							options[0]
-					);
+					String[] options = { "Yes", "No" };
+
+					int res = JOptionPane.showOptionDialog(new JPanel(), "Are you sure add account?", "New Account",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 					
 					if (res == 0) {
 						if (role.equals("Admin")) {
@@ -380,40 +381,43 @@ public class Account extends JPanel {
 								table.repaint();
 								resetTextField();
 							} else {
-								System.out.println("cool");
+								JOptionPane.showMessageDialog(new JPanel(), "ERROR insert!", "Error", JOptionPane.ERROR_MESSAGE);
 							};
 						} else {
+							StudentsModel model = new StudentsModel();
+							Students data = new Students(id, username, password, fullname, (byte)0);
 							
-						}
-						
-					}
-				}
+							if (model.add(data)) {
+								DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+								String row[] = {id, fullname, username, password, role};
+								tableModel.addRow(row);
+								
+								table.validate();
+								table.repaint();
+								resetTextField();
+							} else {
+								JOptionPane.showMessageDialog(new JPanel(), "ERROR insert!", "Error", JOptionPane.ERROR_MESSAGE);
+							};
+						};
+					};
+				};
 			}
-
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
-
 			@Override
 			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
-
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
-
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
 			}
-			
 		});
 		
 		/* Click button update */
@@ -424,6 +428,14 @@ public class Account extends JPanel {
 				// TODO Auto-generated method stub
 				if (table.getRowCount() == 0) {
 					JOptionPane.showMessageDialog(new JPanel(), "Blank table!", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				};
+				if (table.getSelectedRowCount() > 1) {
+					JOptionPane.showMessageDialog(new JPanel(), "Only one row can be deleted on time!", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				};
+				if (table.getSelectedRowCount() == 0) {
+					JOptionPane.showMessageDialog(new JPanel(), "Please select one row!", "Error", JOptionPane.ERROR_MESSAGE);
 					return;
 				};
 				
@@ -442,20 +454,12 @@ public class Account extends JPanel {
 				if (id.isBlank() || fullname.isBlank() || username.isBlank() || password.isBlank() || role == null) {
 					message.setText("Fill all blank !");
 					message.setForeground(Color.RED);
-					JOptionPane.showMessageDialog(new JPanel(), "Please fill all blank !", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(new JPanel(), "Please fill all blank!", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
-					String[] options = {"Yes", "No"};
-					
-					int res = JOptionPane.showOptionDialog(
-							new JPanel(),
-							"Are you sure update it ?",
-							"Update Account",
-							JOptionPane.YES_NO_OPTION,
-							JOptionPane.QUESTION_MESSAGE,
-							null,
-							options,
-							options[0]
-					);
+					String[] options = { "Yes", "No" };
+
+					int res = JOptionPane.showOptionDialog(new JPanel(), "Are you sure update account?", "Update Account",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 					
 					/* If click YES */
 					if (res == 0) {
@@ -489,8 +493,29 @@ public class Account extends JPanel {
 							/**
 							 * Handle student account
 							 */
-						}
-						
+							if (table.getSelectedRowCount() == 1) {
+								StudentsModel model = new StudentsModel();
+								Students data = model.get(id);
+								data.setFullname(fullname);
+								data.setUsername(username);
+								data.setPassword(password);
+								
+								if (model.updateById(id, data)) {
+									tableMode.setValueAt(id, table.getSelectedRow(), 0);
+									tableMode.setValueAt(fullname, table.getSelectedRow(), 1);
+									tableMode.setValueAt(password, table.getSelectedRow(), 2);
+									tableMode.setValueAt(username, table.getSelectedRow(), 3);
+									tableMode.setValueAt(role, table.getSelectedRow(), 4);
+									
+									JOptionPane.showMessageDialog(new JPanel(), "Update Successfully !", "Update", JOptionPane.INFORMATION_MESSAGE);
+								} else {
+									JOptionPane.showMessageDialog(new JPanel(), "ERROR update !", "Error", JOptionPane.ERROR_MESSAGE);
+								}
+							} else {
+								JOptionPane.showMessageDialog(new JPanel(), "Only one row can be updated on time!", "Error", JOptionPane.ERROR_MESSAGE);
+							};
+						};
+						resetTextField();
 					}
 				};
 			}
@@ -528,7 +553,7 @@ public class Account extends JPanel {
 			public void mouseClicked(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				if (table.getSelectedRowCount() == 0) {
-					JOptionPane.showMessageDialog(new JPanel(), "Please select one row !", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(new JPanel(), "Please select one row!", "Error", JOptionPane.ERROR_MESSAGE);
 					return;
 				};
 				if (table.getSelectedRowCount() > 1) {
@@ -536,7 +561,7 @@ public class Account extends JPanel {
 					return;
 				};
 				if (table.getRowCount() == 0) {
-					JOptionPane.showMessageDialog(new JPanel(), "Blank table !", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(new JPanel(), "Blank table!", "Error", JOptionPane.ERROR_MESSAGE);
 					return;
 				};
 				
@@ -551,20 +576,13 @@ public class Account extends JPanel {
 				if (id.isBlank()) {
 					message.setText("Select a specific account!");
 					message.setForeground(Color.RED);
-					JOptionPane.showMessageDialog(new JPanel(), "Please select an ID !", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(new JPanel(), "Please select an ID!", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
-					String[] options = {"Yes", "No"};
-					
-					int res = JOptionPane.showOptionDialog(
-							new JPanel(),
-							"Are you sure delete this account ?",
-							"Delete Account",
-							JOptionPane.YES_NO_OPTION,
-							JOptionPane.QUESTION_MESSAGE,
-							null,
-							options,
-							options[0]
-					);
+					String[] options = { "Yes", "No" };
+
+					int res = JOptionPane.showOptionDialog(new JPanel(), "Are you sure delete account ?",
+							"Delete Account", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
+							options[0]);
 					
 					/* If click YES */
 					if (res == 0) {
@@ -575,14 +593,14 @@ public class Account extends JPanel {
 							 * Handle admin account 
 							 */
 							if (id.equals(_account.getTrainerId())) {
-								JOptionPane.showMessageDialog(new JPanel(), "Can't delete your current account !", "Error", JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showMessageDialog(new JPanel(), "Can't delete your current account!", "Error", JOptionPane.ERROR_MESSAGE);
 								return;
 							};
 							
 							if (_model.deleteById(id)) {
 								tableMode.removeRow(table.getSelectedRow());
 
-								JOptionPane.showMessageDialog(new JPanel(), "Delete Successfully !", "Delete",
+								JOptionPane.showMessageDialog(new JPanel(), "Delete Successfully!", "Delete",
 										JOptionPane.INFORMATION_MESSAGE);
 							} else {
 								JOptionPane.showMessageDialog(new JPanel(), "ERROR Delete !", "Error",
@@ -592,8 +610,19 @@ public class Account extends JPanel {
 							/**
 							 * Handle student account
 							 */
-						}
-						
+							StudentsModel model = new StudentsModel();
+							
+							if (model.deleteById(id)) {
+								tableMode.removeRow(table.getSelectedRow());
+
+								JOptionPane.showMessageDialog(new JPanel(), "Delete Successfully!", "Delete",
+										JOptionPane.INFORMATION_MESSAGE);
+							} else {
+								JOptionPane.showMessageDialog(new JPanel(), "ERROR Delete!", "Error",
+										JOptionPane.ERROR_MESSAGE);
+							};
+						};
+						resetTextField();
 					}
 				};
 			}

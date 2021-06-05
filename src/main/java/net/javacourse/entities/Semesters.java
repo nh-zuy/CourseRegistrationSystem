@@ -1,5 +1,5 @@
 package net.javacourse.entities;
-// Generated 28 May 2021, 22:09:13 by Hibernate Tools 5.4.30.Final
+// Generated 4 Jun 2021, 21:42:10 by Hibernate Tools 5.4.30.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -10,19 +10,15 @@ import java.util.Set;
  */
 public class Semesters implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	private Integer semId;
 	private int year;
 	private String subName;
 	private Date startDay;
 	private Date endDay;
-	private Set<Semesters> currentSems = new HashSet<Semesters>(0);
-	private Set<Semesters> studentses = new HashSet<Semesters>(0);
-	private Set<Semesters> courseses = new HashSet<Semesters>(0);
+	private Set sessionses = new HashSet(0);
+	private Set currentSems = new HashSet(0);
+	private Set studentses = new HashSet(0);
+	private Set courseses = new HashSet(0);
 
 	public Semesters() {
 	}
@@ -34,12 +30,13 @@ public class Semesters implements java.io.Serializable {
 		this.endDay = endDay;
 	}
 
-	public Semesters(int year, String subName, Date startDay, Date endDay, Set<Semesters> currentSems, Set<Semesters> studentses,
-			Set<Semesters> courseses) {
+	public Semesters(int year, String subName, Date startDay, Date endDay, Set sessionses, Set currentSems,
+			Set studentses, Set courseses) {
 		this.year = year;
 		this.subName = subName;
 		this.startDay = startDay;
 		this.endDay = endDay;
+		this.sessionses = sessionses;
 		this.currentSems = currentSems;
 		this.studentses = studentses;
 		this.courseses = courseses;
@@ -85,27 +82,35 @@ public class Semesters implements java.io.Serializable {
 		this.endDay = endDay;
 	}
 
-	public Set<Semesters> getCurrentSems() {
+	public Set getSessionses() {
+		return this.sessionses;
+	}
+
+	public void setSessionses(Set sessionses) {
+		this.sessionses = sessionses;
+	}
+
+	public Set getCurrentSems() {
 		return this.currentSems;
 	}
 
-	public void setCurrentSems(Set<Semesters> currentSems) {
+	public void setCurrentSems(Set currentSems) {
 		this.currentSems = currentSems;
 	}
 
-	public Set<Semesters> getStudentses() {
+	public Set getStudentses() {
 		return this.studentses;
 	}
 
-	public void setStudentses(Set<Semesters> studentses) {
+	public void setStudentses(Set studentses) {
 		this.studentses = studentses;
 	}
 
-	public Set<Semesters> getCourseses() {
+	public Set getCourseses() {
 		return this.courseses;
 	}
 
-	public void setCourseses(Set<Semesters> courseses) {
+	public void setCourseses(Set courseses) {
 		this.courseses = courseses;
 	}
 

@@ -1,19 +1,10 @@
 package net.javacourse.controllers;
 
-import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
-
 import javax.swing.JButton;
-import javax.swing.JProgressBar;
-import javax.swing.Timer;
-
 import net.javacourse.entities.Students;
 import net.javacourse.entities.Trainers;
 import net.javacourse.models.LoginModel;
-import net.javacourse.models.Model;
 import net.javacourse.models.StudentsModel;
 import net.javacourse.models.TrainersModel;
 import net.javacourse.views.LoginForm;
@@ -82,8 +73,6 @@ public class LoginController {
 					
 					_view.dispose();
 					_view = null;
-					
-					
 				}
 			};
 		});

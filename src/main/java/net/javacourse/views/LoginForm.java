@@ -20,6 +20,8 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
 import javax.swing.border.AbstractBorder;
@@ -60,12 +62,25 @@ public class LoginForm extends JFrame {
 	 * Inititalize view
 	 */
 	private void initialView() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setCloseApp();
+		
 		setBounds(250, 150, 800, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+	}
+	
+	/**
+	 * 
+	 */
+	private void setCloseApp() {
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent windowEvent) {
+                System.exit(0);
+            }
+        });
 	}
 	
 	/**
@@ -227,6 +242,9 @@ public class LoginForm extends JFrame {
 		popup.add(errorPw);
 	}
 	
+	/**
+	 * 
+	 */
 	private void setEventButton() {
 		btnLogin.addMouseListener(new MouseListener() {
 			@Override
@@ -265,6 +283,7 @@ public class LoginForm extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// TODO Auto-generated method stub
+				dispose();
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {

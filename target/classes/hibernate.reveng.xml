@@ -8,8 +8,8 @@
   <table-filter match-catalog="course_registration" match-name="previleges"/>
   <table-filter match-catalog="course_registration" match-name="schedules"/>
   <table-filter match-catalog="course_registration" match-name="semesters"/>
+  <table-filter match-catalog="course_registration" match-name="sessions"/>
   <table-filter match-catalog="course_registration" match-name="students"/>
   <table-filter match-catalog="course_registration" match-name="studies"/>
-  <table-filter match-catalog="course_registration" match-name="timetable"/>
   <table-filter match-catalog="course_registration" match-name="trainers"/>
 </hibernate-reverse-engineering>

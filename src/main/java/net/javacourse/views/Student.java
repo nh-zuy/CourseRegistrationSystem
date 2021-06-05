@@ -8,23 +8,19 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
-
+import net.javacourse.controllers.LoginController;
 import net.javacourse.entities.Students;
-import net.javacourse.models.Model;
 import net.javacourse.settings.Size;
-
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 public class Student extends JFrame {
@@ -35,7 +31,6 @@ public class Student extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	/* Model */
-	private Model _model;
 	private Students _account;
 
 	/* Current selection */
@@ -58,6 +53,12 @@ public class Student extends JFrame {
 	private JLabel lblHiAdmin;
 	private JPanel panel_1;
 	private JLabel lblNotices;
+
+	private JButton btnExit;
+
+	private JButton btnProfileSetting;
+
+	private JButton btnCourses;
 	
 
 	/**
@@ -67,12 +68,16 @@ public class Student extends JFrame {
 		/* Load setting infor */
 		this._choice = btnDashboard;
 		this._account = account;
+		
 		this.initialView();
 		this.setEventButton();
 		this.setHoverButton();
 		this.setCloseApp();
 	}
 	
+	/**
+	 * 
+	 */
 	private void initialView() {
 		setBounds(250, 100, Size.WIDTH_APP, Size.HEIGHT_APP);
 		contentPane = new JPanel();
@@ -109,7 +114,7 @@ public class Student extends JFrame {
 		btnClass.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
 		btnClass.setBorder(null);
 		btnClass.setBackground(new Color(23, 33, 53));
-		btnClass.setBounds(0, 226, 150, 43);
+		btnClass.setBounds(0, 215, 150, 53);
 		nav.add(btnClass);
 		
 		btnProfile = new JButton("Profile");
@@ -118,7 +123,7 @@ public class Student extends JFrame {
 		btnProfile.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
 		btnProfile.setBorder(null);
 		btnProfile.setBackground(new Color(23, 33, 53));
-		btnProfile.setBounds(0, 287, 150, 54);
+		btnProfile.setBounds(0, 287, 150, 53);
 		nav.add(btnProfile);
 		
 		btnLogout = new JButton("Logout");
@@ -129,7 +134,6 @@ public class Student extends JFrame {
 		btnLogout.setBackground(new Color(23, 33, 53));
 		btnLogout.setBounds(0, 353, 150, 53);
 		nav.add(btnLogout);
-
 		
 		JPanel header = new JPanel();
 		header.setBackground(new Color(67, 119, 202));
@@ -146,7 +150,6 @@ public class Student extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -161,12 +164,10 @@ public class Student extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
 			}
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
 			}
 		});
 		header.add(lblTitle);
@@ -214,7 +215,7 @@ public class Student extends JFrame {
 		lblHiAdmin.setBounds(0, 86, 167, 22);
 		user.add(lblHiAdmin);
 		
-		JButton btnExit = new JButton("");
+		btnExit = new JButton("");
 		btnExit.setIcon(new ImageIcon(Student.class.getResource("/images/icons8-safe-out-32.png")));
 		btnExit.setForeground(Color.WHITE);
 		btnExit.setBackground(new Color(119, 165, 251));
@@ -229,12 +230,12 @@ public class Student extends JFrame {
 		user.add(panel);
 		
 		notification = new JPanel();
-		notification.setPreferredSize(new Dimension(200, 200));
+		notification.setPreferredSize(new Dimension(200, 340));
 		notification.setBackground(new Color(67, 119, 202));
 		status.add(notification, BorderLayout.SOUTH);
 		notification.setLayout(null);
 		
-		lblNotices = new JLabel("Notices");
+		lblNotices = new JLabel("Notification");
 		lblNotices.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		lblNotices.setForeground(Color.GREEN);
 		lblNotices.setHorizontalAlignment(SwingConstants.CENTER);
@@ -256,17 +257,17 @@ public class Student extends JFrame {
 		btnSchedule.setBounds(12, 41, 121, 31);
 		task.add(btnSchedule);
 		
-		JButton btnMarks = new JButton("Marks");
-		btnMarks.setHorizontalAlignment(SwingConstants.LEADING);
-		btnMarks.setIcon(new ImageIcon(Student.class.getResource("/images/icons8-study-32.png")));
-		btnMarks.setForeground(Color.WHITE);
-		btnMarks.setFocusPainted(false);
-		btnMarks.setBorder(null);
-		btnMarks.setBackground(new Color(81,126,211));
-		btnMarks.setBounds(12, 109, 121, 31);
-		task.add(btnMarks);
+		JButton btnMark = new JButton("Marks");
+		btnMark.setHorizontalAlignment(SwingConstants.LEADING);
+		btnMark.setIcon(new ImageIcon(Student.class.getResource("/images/icons8-study-32.png")));
+		btnMark.setForeground(Color.WHITE);
+		btnMark.setFocusPainted(false);
+		btnMark.setBorder(null);
+		btnMark.setBackground(new Color(81,126,211));
+		btnMark.setBounds(12, 109, 121, 31);
+		task.add(btnMark);
 		
-		JButton btnProfileSetting = new JButton("Profile");
+		btnProfileSetting = new JButton("Profile");
 		btnProfileSetting.setHorizontalAlignment(SwingConstants.LEADING);
 		btnProfileSetting.setIcon(new ImageIcon(Student.class.getResource("/images/icons8-admin-settings-male-32.png")));
 		btnProfileSetting.setForeground(Color.WHITE);
@@ -276,7 +277,7 @@ public class Student extends JFrame {
 		btnProfileSetting.setBounds(174, 41, 114, 31);
 		task.add(btnProfileSetting);
 		
-		JButton btnCourses = new JButton("Courses");
+		btnCourses = new JButton("Courses");
 		btnCourses.setHorizontalAlignment(SwingConstants.LEADING);
 		btnCourses.setIcon(new ImageIcon(Student.class.getResource("/images/icons8-course-assign-32.png")));
 		btnCourses.setForeground(Color.WHITE);
@@ -307,19 +308,65 @@ public class Student extends JFrame {
 	}
 	
 	private void setEventButton() {
-		ArrayList<JButton> buttons = new ArrayList<JButton>();
-		buttons.add(btnDashboard);
-		buttons.add(btnCourse);
-		buttons.add(btnClass);
-		buttons.add(btnProfile);
-		buttons.add(btnLogout);
+		/* Logout button */
+		btnLogout.addActionListener(e -> {
+			String[] options = { "Yes", "No" };
+
+			int res = JOptionPane.showOptionDialog(new JPanel(), "Sure Logout?", "Logout", JOptionPane.YES_NO_OPTION,
+					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+			if (res == 0) {
+				dispose();
+				/* Login again or not */
+				new LoginController().run();
+			};
+		});
 		
-		for (JButton btn: buttons) {
-			btn.addActionListener(e -> {
-				_choice = btn;
-				setSelection();
-			});
-		};
+		/* Exit */
+		btnExit.addActionListener(e -> {
+			dispose();
+			new LoginController().run();
+		});
+		
+		/**
+		 * 
+		 */
+		btnProfileSetting.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new ProfileStudent(this._account));
+			workspace.validate();
+			workspace.repaint();
+		});
+		
+		/* Class information *.
+		 *
+		 */
+		btnClass.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new ClassStudent(this._account));
+			workspace.validate();
+			workspace.repaint();
+		});
+		
+		/**
+		 * 
+		 */
+		btnCourse.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new Portal(this._account));
+			workspace.validate();
+			workspace.repaint();
+		});
+		
+		/**
+		 * 
+		 */
+		btnCourses.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new CourseStudent(this._account));
+			workspace.validate();
+			workspace.repaint();
+		});
 	}
 	
 	private void setHoverButton() {
@@ -334,7 +381,8 @@ public class Student extends JFrame {
 			btn.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					
+					_choice = btn;
+					setSelection();
 				}
 				@Override
 				public void mouseEntered(MouseEvent arg0) {
@@ -371,6 +419,9 @@ public class Student extends JFrame {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	private void setSelection() {
 		ArrayList<JButton> buttons = new ArrayList<JButton>();
 		buttons.add(btnDashboard);

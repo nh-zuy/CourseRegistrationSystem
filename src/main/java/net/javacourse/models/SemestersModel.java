@@ -3,6 +3,8 @@ package net.javacourse.models;
 
 import java.util.List;
 import org.hibernate.Transaction;
+
+import net.javacourse.entities.Courses;
 import net.javacourse.entities.Semesters;
 
 /**
