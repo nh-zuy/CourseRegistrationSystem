@@ -77,6 +77,7 @@ public class Admin extends JFrame {
 		
 		/* Initial view and event */
 		this.initialView();
+		this.setDashboard();
 		this.setEventButton();
 		this.setHoverButton();
 		this.setCloseApp();
@@ -344,12 +345,27 @@ public class Admin extends JFrame {
         });
 	}
 	
+	private void setDashboard() {
+		workspace.removeAll();
+		workspace.add(new Dashboard());
+		workspace.validate();
+		workspace.repaint();
+	}
+	
 	/**
 	 * Set event for button
 	 * 1. Menu button
 	 * 2. Task button
 	 */
 	private void setEventButton() {
+		/* Dashboard */
+		btnDashboard.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new Dashboard());
+			workspace.validate();
+			workspace.repaint();
+		});
+		
 		/* Menu button */
 		btnAccount.addActionListener(e -> {
 			workspace.removeAll();
@@ -418,7 +434,7 @@ public class Admin extends JFrame {
 		btnLogout.addActionListener(e -> {
 			String[] options = { "Yes", "No" };
 
-			int res = JOptionPane.showOptionDialog(new JPanel(), "Sure Logout?", "Logout",
+			int res = JOptionPane.showOptionDialog(new JPanel(), "Log Out?", "Log Out",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 			
 			if (res == 0) {

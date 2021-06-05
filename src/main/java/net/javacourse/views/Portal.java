@@ -88,13 +88,13 @@ public class Portal extends JPanel {
 		title_1.setBackground(new Color(119, 165, 251));
 		form.add(title_1);
 		
-		JLabel lblNewLabel_1 = new JLabel("Course Registration Time");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 35));
-		lblNewLabel_1.setBackground(Color.WHITE);
-		lblNewLabel_1.setBounds(273, 12, 437, 47);
-		title_1.add(lblNewLabel_1);
+		JLabel portalTitle = new JLabel("Course Registration Time");
+		portalTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		portalTitle.setForeground(Color.WHITE);
+		portalTitle.setFont(new Font("Comic Sans MS", Font.PLAIN, 35));
+		portalTitle.setBackground(Color.WHITE);
+		portalTitle.setBounds(273, 12, 437, 47);
+		title_1.add(portalTitle);
 		
 		time = new JLabel("Time register: ");
 		time.setHorizontalAlignment(SwingConstants.CENTER);
@@ -143,18 +143,23 @@ public class Portal extends JPanel {
 			};
 			
 			if (start.compareTo(now) > 0 || end.compareTo(now) < 0) {
-				JOptionPane.showMessageDialog(new JPanel(), "No in course registration time!", "Error", JOptionPane.ERROR_MESSAGE);	
+				time.setText("");
+				portalTitle.setText("Not in register time");
+				portalTitle.setForeground(Color.RED);
+				this.remove(btnRegister);
+				JOptionPane.showMessageDialog(new JPanel(), "Not in course registration time!", "Error", JOptionPane.ERROR_MESSAGE);	
 			} else {
 				/* Time remaining */
 				SimpleDateFormat dfm = new SimpleDateFormat("dd/MM/yyyy");
 				String quote = time.getText().trim();
-				quote = quote + dfm.format(start) + " - " + dfm.format(end);
+				quote = quote + " " + dfm.format(start) + " - " + dfm.format(end);
 				time.setText(quote);
 						
 				/* Manipulating data */
 				this.resetTextField();
 				this.setData();
 				this.setEventButton();
+				break;
 			}
 		};
 	}

@@ -69,9 +69,17 @@ public class Student extends JFrame {
 		this._account = account;
 		
 		this.initialView();
+		this.setDashboard();
 		this.setEventButton();
 		this.setHoverButton();
 		this.setCloseApp();
+	}
+	
+	private void setDashboard() {
+		workspace.removeAll();
+		workspace.add(new Dashboard());
+		workspace.validate();
+		workspace.repaint();
 	}
 	
 	/**
@@ -302,7 +310,7 @@ public class Student extends JFrame {
 		btnLogout.addActionListener(e -> {
 			String[] options = { "Yes", "No" };
 
-			int res = JOptionPane.showOptionDialog(new JPanel(), "Sure Logout?", "Logout", JOptionPane.YES_NO_OPTION,
+			int res = JOptionPane.showOptionDialog(new JPanel(), "Log Out?", "Log Out", JOptionPane.YES_NO_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
 			if (res == 0) {
@@ -316,6 +324,13 @@ public class Student extends JFrame {
 		btnExit.addActionListener(e -> {
 			dispose();
 			new LoginController().run();
+		});
+		
+		btnDashboard.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new Dashboard());
+			workspace.validate();
+			workspace.repaint();
 		});
 		
 		/**
