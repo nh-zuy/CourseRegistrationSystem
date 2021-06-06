@@ -42,6 +42,7 @@ import java.awt.event.ItemListener;
 import com.toedter.calendar.JDateChooser;
 import net.javacourse.helpers.Helper;
 import javax.swing.JComboBox;
+import javax.swing.border.BevelBorder;
 
 public class Course extends JPanel {
 	/**
@@ -134,8 +135,8 @@ public class Course extends JPanel {
 		textCode.setHorizontalAlignment(SwingConstants.CENTER);
 		textCode.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		textCode.setColumns(10);
-		textCode.setBorder(null);
-		textCode.setBounds(98, 2, 160, 50);
+		textCode.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		textCode.setBounds(91, 2, 179, 50);
 		forminput_1_2.add(textCode);
 		
 		/* Three of button */
@@ -176,7 +177,7 @@ public class Course extends JPanel {
 		lblFullname.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFullname.setForeground(Color.BLACK);
 		lblFullname.setFont(new Font("Chilanka", Font.BOLD, 15));
-		lblFullname.setBounds(24, 2, 78, 50);
+		lblFullname.setBounds(12, 2, 79, 50);
 		forminput_1_3.add(lblFullname);
 		
 		
@@ -191,7 +192,7 @@ public class Course extends JPanel {
 			}
 			
 		});
-		boxSem.setBounds(109, 13, 158, 24);
+		boxSem.setBounds(89, 13, 178, 24);
 		forminput_1_3.add(boxSem);
 		
 		JPanel forminput_1_4 = new JPanel();
@@ -214,7 +215,7 @@ public class Course extends JPanel {
 		textCredit.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textCredit.setColumns(10);
 		textCredit.setBorder(null);
-		textCredit.setBounds(91, 12, 176, 26);
+		textCredit.setBounds(91, 12, 179, 26);
 		forminput_1_4.add(textCredit);
 		
 		JPanel forminput_1_5 = new JPanel();
@@ -237,7 +238,7 @@ public class Course extends JPanel {
 		textSlot.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textSlot.setColumns(10);
 		textSlot.setBorder(null);
-		textSlot.setBounds(82, 12, 176, 26);
+		textSlot.setBounds(81, 12, 176, 26);
 		forminput_1_5.add(textSlot);
 		
 		JPanel forminput_1_2_1 = new JPanel();
@@ -259,7 +260,7 @@ public class Course extends JPanel {
 		textName.setHorizontalAlignment(SwingConstants.CENTER);
 		textName.setFont(new Font("Arial", Font.BOLD, 20));
 		textName.setColumns(10);
-		textName.setBorder(null);
+		textName.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textName.setBounds(167, 2, 367, 50);
 		forminput_1_2_1.add(textName);
 		
@@ -345,12 +346,8 @@ public class Course extends JPanel {
 	 * 
 	 */
 	private void setEventButton() {
-		/* Only one checkbox is selected on time */
-
-		
 		/* Click button */
 		btnAdd.addMouseListener(new MouseListener() {
-
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// TODO Auto-generated method stub
@@ -394,22 +391,13 @@ public class Course extends JPanel {
 				}
 			}
 			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
+			public void mouseEntered(MouseEvent arg0) {}
 			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseExited(MouseEvent arg0) {}
 			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
+			public void mousePressed(MouseEvent arg0) {}
 			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
+			public void mouseReleased(MouseEvent arg0) {}
 		});
 		
 		/* Click button update */
@@ -468,31 +456,14 @@ public class Course extends JPanel {
 					};
 				};
 			}
-
 			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mouseEntered(MouseEvent arg0) {}
 			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mouseExited(MouseEvent arg0) {}
 			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mousePressed(MouseEvent arg0) {}
 			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+			public void mouseReleased(MouseEvent arg0) {}
 		});
 		
 		/* Click button Delete */
@@ -540,34 +511,19 @@ public class Course extends JPanel {
 							JOptionPane.showMessageDialog(new JPanel(), "ERROR Delete !", "Error",
 									JOptionPane.ERROR_MESSAGE);
 						};
+						
+						resetTextField();
 					};
 				}
 			}
-
 			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mouseEntered(MouseEvent arg0) {}
 			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mouseExited(MouseEvent arg0) {}
 			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mousePressed(MouseEvent arg0) {}
 			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+			public void mouseReleased(MouseEvent arg0) {}
 		});
 		
 		/* Event for data table */
@@ -590,31 +546,14 @@ public class Course extends JPanel {
 				textCredit.setText(creditField);
 				textSlot.setText(slotField);
 			}
-
 			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mouseEntered(MouseEvent arg0) {}
 			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mouseExited(MouseEvent arg0) {}
 			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
+			public void mousePressed(MouseEvent arg0) {}
 			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+			public void mouseReleased(MouseEvent arg0) {}
 		});
 	}
 }

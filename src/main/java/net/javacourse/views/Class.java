@@ -44,6 +44,7 @@ import java.awt.event.ItemListener;
 import com.toedter.calendar.JDateChooser;
 import net.javacourse.helpers.Helper;
 import javax.swing.JComboBox;
+import javax.swing.border.BevelBorder;
 
 public class Class extends JPanel {
 	/**
@@ -120,7 +121,7 @@ public class Class extends JPanel {
 		forminput_1_2.setLayout(null);
 		forminput_1_2.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2.setBackground(new Color(119, 165, 251));
-		forminput_1_2.setBounds(173, 0, 270, 50);
+		forminput_1_2.setBounds(173, 0, 352, 50);
 		input.add(forminput_1_2);
 		
 		JLabel lblId = new JLabel("Class ID");
@@ -136,8 +137,8 @@ public class Class extends JPanel {
 		textID.setHorizontalAlignment(SwingConstants.CENTER);
 		textID.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		textID.setColumns(10);
-		textID.setBorder(null);
-		textID.setBounds(98, 2, 160, 50);
+		textID.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		textID.setBounds(120, 2, 220, 50);
 		forminput_1_2.add(textID);
 		
 		/* Three of button */
@@ -232,7 +233,7 @@ public class Class extends JPanel {
 		textName.setHorizontalAlignment(SwingConstants.CENTER);
 		textName.setFont(new Font("Arial", Font.BOLD, 20));
 		textName.setColumns(10);
-		textName.setBorder(null);
+		textName.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textName.setBounds(120, 2, 220, 50);
 		forminput_1_2_1.add(textName);
 		

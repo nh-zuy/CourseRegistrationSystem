@@ -29,6 +29,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.BevelBorder;
 
 public class Account extends JPanel {
 	/**
@@ -107,6 +108,7 @@ public class Account extends JPanel {
 		input.add(forminput_1_2);
 		
 		JLabel lblId = new JLabel("ID");
+		lblId.setHorizontalAlignment(SwingConstants.CENTER);
 		lblId.setForeground(Color.BLACK);
 		lblId.setFont(new Font("Chilanka", Font.BOLD, 20));
 		lblId.setBounds(0, 2, 34, 50);
@@ -117,7 +119,7 @@ public class Account extends JPanel {
 		textID.setHorizontalAlignment(SwingConstants.CENTER);
 		textID.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textID.setColumns(10);
-		textID.setBorder(null);
+		textID.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textID.setBounds(35, 12, 191, 26);
 		forminput_1_2.add(textID);
 		
@@ -125,7 +127,7 @@ public class Account extends JPanel {
 		forminput_1.setLayout(null);
 		forminput_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1.setBackground(new Color(119, 165, 251));
-		forminput_1.setBounds(204, 69, 289, 50);
+		forminput_1.setBounds(318, 124, 289, 50);
 		input.add(forminput_1);
 		
 		JLabel lblName = new JLabel("Username");
@@ -148,7 +150,7 @@ public class Account extends JPanel {
 		forminput_1_1.setLayout(null);
 		forminput_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_1.setBounds(204, 131, 289, 50);
+		forminput_1_1.setBounds(318, 186, 289, 50);
 		input.add(forminput_1_1);
 		
 		JLabel lblPassword = new JLabel("Password");
@@ -171,21 +173,22 @@ public class Account extends JPanel {
 		forminput_1_1_1.setLayout(null);
 		forminput_1_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_1_1.setBounds(0, 196, 711, 50);
+		forminput_1_1_1.setBounds(315, 62, 294, 50);
 		input.add(forminput_1_1_1);
 		
 		/* Role: Admin/Student */
 		JLabel lblRole = new JLabel("Role");
+		lblRole.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRole.setForeground(Color.BLACK);
 		lblRole.setFont(new Font("Chilanka", Font.BOLD, 20));
-		lblRole.setBounds(204, 4, 49, 50);
+		lblRole.setBounds(0, 0, 49, 50);
 		forminput_1_1_1.add(lblRole);
 		
 		chAdmin = new JCheckBox("Admin");
 		chAdmin.setForeground(Color.YELLOW);
 		chAdmin.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		chAdmin.setHorizontalAlignment(SwingConstants.CENTER);
-		chAdmin.setBounds(259, 0, 101, 50);
+		chAdmin.setBounds(63, 0, 101, 50);
 		chAdmin.setFocusPainted(false);
 		chAdmin.setBackground(new Color(119, 165, 251));
 		chAdmin.addActionListener(e -> {
@@ -202,7 +205,7 @@ public class Account extends JPanel {
 		chStudent.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		chStudent.setFocusPainted(false);
 		chStudent.setBackground(new Color(119, 165, 251));
-		chStudent.setBounds(353, 0, 126, 50);
+		chStudent.setBounds(168, 0, 126, 50);
 		chStudent.addActionListener(e -> {
 			if (chAdmin.isSelected()) {
 				chAdmin.setSelected(false);
@@ -246,7 +249,7 @@ public class Account extends JPanel {
 		JLabel lblFullname = new JLabel("Fullname");
 		lblFullname.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFullname.setForeground(Color.BLACK);
-		lblFullname.setFont(new Font("Chilanka", Font.BOLD, 15));
+		lblFullname.setFont(new Font("Chilanka", Font.BOLD, 17));
 		lblFullname.setBounds(0, 2, 78, 50);
 		forminput_1_3.add(lblFullname);
 		
@@ -255,7 +258,7 @@ public class Account extends JPanel {
 		textFullname.setHorizontalAlignment(SwingConstants.CENTER);
 		textFullname.setFont(new Font("Arial", Font.BOLD, 16));
 		textFullname.setColumns(10);
-		textFullname.setBorder(null);
+		textFullname.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textFullname.setBounds(81, 11, 176, 26);
 		forminput_1_3.add(textFullname);
 		

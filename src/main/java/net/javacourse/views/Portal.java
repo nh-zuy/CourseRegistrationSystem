@@ -114,7 +114,7 @@ public class Portal extends JPanel {
 		btnRegister.setForeground(Color.WHITE);
 		btnRegister.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnRegister.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnRegister.setBackground(SystemColor.desktop);
+		btnRegister.setBackground(Color.ORANGE);
 		btnRegister.setBounds(422, 0, 138, 46);
 		title.add(btnRegister);
 
@@ -146,7 +146,7 @@ public class Portal extends JPanel {
 				time.setText("");
 				portalTitle.setText("Not in register time");
 				portalTitle.setForeground(Color.RED);
-				this.remove(btnRegister);
+				btnRegister.setVisible(false);
 				JOptionPane.showMessageDialog(new JPanel(), "Not in course registration time!", "Error", JOptionPane.ERROR_MESSAGE);	
 			} else {
 				/* Time remaining */
@@ -263,6 +263,14 @@ public class Portal extends JPanel {
 	 */
 	private void setEventButton() {
 		btnRegister.addActionListener(e -> {
+			String[] options = { "Yes", "No" };
+
+			int res = JOptionPane.showOptionDialog(new JPanel(), "Are you sure register courses?", "Register",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+			if (res != 0) {
+				return;
+			};
+			
 			List<String> courses = new ArrayList<String>();
 			
 			for (int i = 0; i < table.getRowCount(); ++i) {
@@ -301,11 +309,12 @@ public class Portal extends JPanel {
 					for (Studies study: this._studies) {
 						if (study.getSchedules().getDay().equals(s.getDay()) && study.getSchedules().getShift() == s.getShift()) {
 							isConcur = true;
+							break;
 						};
 					};
 					
 					if (isConcur) {
-						JOptionPane.showMessageDialog(new JPanel(), "Cant register duplicate time!", "Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(new JPanel(), "Courses're overlapped*\n Try another course!", "Error", JOptionPane.ERROR_MESSAGE);
 						return;
 					} else {
 						_model.add(data);

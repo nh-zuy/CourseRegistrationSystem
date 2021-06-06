@@ -127,11 +127,11 @@ public class StudentList extends JPanel {
 		lblClass.setHorizontalAlignment(SwingConstants.CENTER);
 		lblClass.setForeground(Color.BLACK);
 		lblClass.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-		lblClass.setBounds(0, 2, 73, 50);
+		lblClass.setBounds(0, 2, 112, 50);
 		forminput_1_3.add(lblClass);
 		
 		boxClasses = new JComboBox<String>(new DefaultComboBoxModel<String>());
-		boxClasses.setBounds(69, 16, 187, 24);
+		boxClasses.setBounds(110, 16, 149, 24);
 		forminput_1_3.add(boxClasses);
 		
 		JPanel forminput_1_2_1_1 = new JPanel();
@@ -145,7 +145,7 @@ public class StudentList extends JPanel {
 		Name_1.setHorizontalAlignment(SwingConstants.CENTER);
 		Name_1.setForeground(Color.BLACK);
 		Name_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-		Name_1.setBounds(0, 2, 65, 50);
+		Name_1.setBounds(0, 2, 71, 50);
 		forminput_1_2_1_1.add(Name_1);
 		
 		textSID = new JTextField();
@@ -154,7 +154,7 @@ public class StudentList extends JPanel {
 		textSID.setFont(new Font("Arial", Font.BOLD, 20));
 		textSID.setColumns(10);
 		textSID.setBorder(null);
-		textSID.setBounds(62, 15, 181, 26);
+		textSID.setBounds(71, 15, 170, 26);
 		forminput_1_2_1_1.add(textSID);
 		
 		btnFilter = new JButton("Filter");
@@ -190,7 +190,7 @@ public class StudentList extends JPanel {
 		textID.setHorizontalAlignment(SwingConstants.CENTER);
 		textID.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		textID.setColumns(10);
-		textID.setBorder(null);
+		textID.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textID.setBounds(110, 2, 150, 50);
 		forminput_1_2.add(textID);
 		
@@ -240,7 +240,7 @@ public class StudentList extends JPanel {
 		textName.setHorizontalAlignment(SwingConstants.CENTER);
 		textName.setFont(new Font("Arial", Font.BOLD, 20));
 		textName.setColumns(10);
-		textName.setBorder(null);
+		textName.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textName.setBounds(110, 2, 221, 50);
 		forminput_1_2_1.add(textName);
 		
@@ -264,7 +264,7 @@ public class StudentList extends JPanel {
 		textEmail.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textEmail.setColumns(10);
 		textEmail.setBorder(null);
-		textEmail.setBounds(82, 12, 176, 26);
+		textEmail.setBounds(92, 12, 168, 26);
 		forminput_1_5_1.add(textEmail);
 		
 		JPanel forminput_1_3_1 = new JPanel();
@@ -277,12 +277,12 @@ public class StudentList extends JPanel {
 		JLabel lblClass_1 = new JLabel("Class");
 		lblClass_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblClass_1.setForeground(Color.BLACK);
-		lblClass_1.setFont(new Font("Chilanka", Font.BOLD, 15));
-		lblClass_1.setBounds(0, 2, 78, 50);
+		lblClass_1.setFont(new Font("Chilanka", Font.BOLD, 17));
+		lblClass_1.setBounds(0, 2, 96, 50);
 		forminput_1_3_1.add(lblClass_1);
 		
 		boxClass = new JComboBox<String>(new DefaultComboBoxModel<String>());
-		boxClass.setBounds(82, 13, 158, 24);
+		boxClass.setBounds(96, 13, 171, 24);
 		forminput_1_3_1.add(boxClass);
 		
 		JPanel forminput_1_5_1_1 = new JPanel();
@@ -290,7 +290,7 @@ public class StudentList extends JPanel {
 		forminput_1_5_1_1.setLayout(null);
 		forminput_1_5_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_5_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_5_1_1.setBounds(522, 60, 171, 69);
+		forminput_1_5_1_1.setBounds(536, 62, 171, 69);
 		input.add(forminput_1_5_1_1);
 		
 		JLabel lblNewLabel = new JLabel("Sex");
@@ -343,7 +343,7 @@ public class StudentList extends JPanel {
 		textTelephone.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textTelephone.setColumns(10);
 		textTelephone.setBorder(null);
-		textTelephone.setBounds(111, 12, 159, 26);
+		textTelephone.setBounds(96, 12, 171, 26);
 		forminput_1_5_1_2.add(textTelephone);
 		
 		JPanel forminput_1_5_1_3 = new JPanel();
@@ -366,7 +366,7 @@ public class StudentList extends JPanel {
 		textCitizen.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textCitizen.setColumns(10);
 		textCitizen.setBorder(null);
-		textCitizen.setBounds(90, 12, 168, 26);
+		textCitizen.setBounds(92, 12, 168, 26);
 		forminput_1_5_1_3.add(textCitizen);
 		
 		JPanel forminput_1_5_1_3_1 = new JPanel();
@@ -380,7 +380,7 @@ public class StudentList extends JPanel {
 		lblAddress.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAddress.setForeground(Color.BLACK);
 		lblAddress.setFont(new Font("Chilanka", Font.BOLD, 17));
-		lblAddress.setBounds(0, 3, 83, 50);
+		lblAddress.setBounds(0, 3, 98, 50);
 		forminput_1_5_1_3_1.add(lblAddress);
 		
 		textAddress = new JTextField();
@@ -389,7 +389,7 @@ public class StudentList extends JPanel {
 		textAddress.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textAddress.setColumns(10);
 		textAddress.setBorder(null);
-		textAddress.setBounds(93, 12, 177, 26);
+		textAddress.setBounds(96, 12, 170, 26);
 		forminput_1_5_1_3_1.add(textAddress);
 		
 		/* Manipulating data */
@@ -568,8 +568,14 @@ public class StudentList extends JPanel {
 				// TODO Auto-generated method stub
 				String id = textID.getText().trim();
 				String fullname = textName.getText().trim();
-				String tClass = (String)boxClass.getSelectedItem();
-				int classId = Helper.parseClassId(tClass);
+				Object tClass = boxClass.getSelectedItem();
+				int classId;
+				if (tClass == null) {
+					classId = -1;
+				} else {
+					classId = Helper.parseClassId((String)tClass);
+				};
+				
 				byte sex = 0;
 				if (chFemale.isSelected()) {
 					sex = 1;
@@ -591,7 +597,6 @@ public class StudentList extends JPanel {
 					
 					if (res == 0) {
 						ClassesModel model = new ClassesModel();
-						Classes c = model.find(classId);
 						CurrentSem current = new CurrentSemModel().getCurrentSemester();
 						Semesters s = current.getSemesters();
 						Students data = new Students();
@@ -600,7 +605,10 @@ public class StudentList extends JPanel {
 						data.setAddress(address);
 						data.setCitizenId(citizenId);
 						data.setTelephone(telephone);
-						data.setClasses(c);
+						if (classId != -1) {
+							Classes c = model.find(classId);
+							data.setClasses(c);
+						};
 						data.setSemesters(s);
 						data.setSex(sex);
 						data.setFullname(fullname);
@@ -608,7 +616,7 @@ public class StudentList extends JPanel {
 						
 						if (_model.add(data)) {
 							DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-							String row[] = {id, fullname, tClass, (sex == 0) ? "Male" : "Female", email, telephone};
+							String row[] = {id, fullname, (String)tClass, (sex == 0) ? "Male" : "Female", email, telephone};
 							tableModel.addRow(row);
 							
 							table.validate();
@@ -807,12 +815,20 @@ public class StudentList extends JPanel {
 				String nameField = tableModel.getValueAt(table.getSelectedRow(), 1).toString();
 				String classField = tableModel.getValueAt(table.getSelectedRow(), 2).toString();
 				String sexField = tableModel.getValueAt(table.getSelectedRow(), 3).toString();
-				String emailField = tableModel.getValueAt(table.getSelectedRow(), 4).toString();
-				String telephoneField = tableModel.getValueAt(table.getSelectedRow(), 5).toString();
+				Object emailField = tableModel.getValueAt(table.getSelectedRow(), 4);
+				String email = "";
+				if (emailField != null) {
+					email = emailField.toString();
+				};
+				Object telephoneField = tableModel.getValueAt(table.getSelectedRow(), 5);
+				String telephone = "";
+				if (telephoneField != null) {
+					telephone = telephoneField.toString();
+				};
 				
 				textID.setText(idField);
 				textName.setText(nameField);
-				textEmail.setText(emailField);
+				textEmail.setText(email);
 				boxClass.setSelectedItem(classField);
 				if (sexField.equals("Male")) {
 					chMale.setSelected(true);
@@ -821,7 +837,7 @@ public class StudentList extends JPanel {
 					chMale.setSelected(false);
 					chFemale.setSelected(true);
 				};
-				textTelephone.setText(telephoneField);
+				textTelephone.setText(telephone);
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {

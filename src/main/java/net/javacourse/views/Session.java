@@ -141,7 +141,7 @@ public class Session extends JPanel {
 		textID.setHorizontalAlignment(SwingConstants.CENTER);
 		textID.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textID.setColumns(10);
-		textID.setBorder(null);
+		textID.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textID.setBounds(109, 14, 169, 26);
 		forminput_1_2.add(textID);
 		
@@ -189,7 +189,7 @@ public class Session extends JPanel {
 		textYear.setHorizontalAlignment(SwingConstants.CENTER);
 		textYear.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textYear.setColumns(10);
-		textYear.setBorder(null);
+		textYear.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textYear.setBounds(61, 11, 95, 26);
 		forminput_1_3.add(textYear);
 		
@@ -236,7 +236,7 @@ public class Session extends JPanel {
 		forminput_1_3_1.setLayout(null);
 		forminput_1_3_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_3_1.setBackground(new Color(119, 165, 251));
-		forminput_1_3_1.setBounds(173, 69, 270, 50);
+		forminput_1_3_1.setBounds(173, 69, 279, 50);
 		input.add(forminput_1_3_1);
 		
 		JLabel lblFullname_1 = new JLabel("Semester");
@@ -247,7 +247,7 @@ public class Session extends JPanel {
 		forminput_1_3_1.add(lblFullname_1);
 		
 		boxSem = new JComboBox<String>(new DefaultComboBoxModel<String>());
-		boxSem.setBounds(81, 13, 177, 24);
+		boxSem.setBounds(81, 13, 186, 24);
 		forminput_1_3_1.add(boxSem);
 		
 		/* Manipulating data */

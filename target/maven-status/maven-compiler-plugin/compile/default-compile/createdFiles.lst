@@ -30,6 +30,7 @@ net/javacourse/views/Account$4.class
 net/javacourse/views/Course$1.class
 net/javacourse/views/StudentList$4.class
 net/javacourse/models/CoursesModel.class
+net/javacourse/views/Dashboard.class
 net/javacourse/models/StudentsModel.class
 net/javacourse/views/ProfileStudent.class
 net/javacourse/views/Student.class

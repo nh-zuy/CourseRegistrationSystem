@@ -16,6 +16,8 @@ import net.javacourse.models.StudentsModel;
 import javax.swing.JCheckBox;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.MatteBorder;
 
 
 public class ProfileStudent extends JPanel {
@@ -106,7 +108,7 @@ public class ProfileStudent extends JPanel {
 		textID.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textID.setEditable(false);
 		textID.setBounds(376, 0, 323, 50);
-		textID.setBorder(null);
+		textID.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		forminput.add(textID);
 		textID.setColumns(10);
 		
@@ -127,7 +129,7 @@ public class ProfileStudent extends JPanel {
 		textUsername.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textUsername.setHorizontalAlignment(SwingConstants.CENTER);
 		textUsername.setColumns(10);
-		textUsername.setBorder(null);
+		textUsername.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		textUsername.setBounds(321, 14, 184, 26);
 		forminput_1.add(textUsername);
 		
@@ -144,7 +146,7 @@ public class ProfileStudent extends JPanel {
 		textPasswd.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textPasswd.setHorizontalAlignment(SwingConstants.CENTER);
 		textPasswd.setColumns(10);
-		textPasswd.setBorder(null);
+		textPasswd.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 0, 0)));
 		
 		JPanel forminput_3 = new JPanel();
 		forminput_3.setLayout(null);
@@ -163,7 +165,7 @@ public class ProfileStudent extends JPanel {
 		textFullname.setFont(new Font("Arial", Font.BOLD, 16));
 		textFullname.setHorizontalAlignment(SwingConstants.CENTER);
 		textFullname.setColumns(10);
-		textFullname.setBorder(null);
+		textFullname.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textFullname.setBounds(376, 12, 323, 26);
 		forminput_3.add(textFullname);
 		

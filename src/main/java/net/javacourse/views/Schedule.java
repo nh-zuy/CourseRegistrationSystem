@@ -251,7 +251,7 @@ public class Schedule extends JPanel {
 		textRoom.setHorizontalAlignment(SwingConstants.CENTER);
 		textRoom.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textRoom.setColumns(10);
-		textRoom.setBorder(null);
+		textRoom.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textRoom.setBounds(66, 12, 89, 26);
 		forminput_1_5_1_3.add(textRoom);
 		
@@ -274,7 +274,7 @@ public class Schedule extends JPanel {
 		textID.setHorizontalAlignment(SwingConstants.CENTER);
 		textID.setFont(new Font("Arial", Font.BOLD, 20));
 		textID.setColumns(10);
-		textID.setBorder(null);
+		textID.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textID.setBounds(62, 15, 77, 26);
 		forminput_1_2_1_1_1.add(textID);
 		

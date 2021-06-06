@@ -127,7 +127,7 @@ public class Semester extends JPanel {
 		JLabel lblId = new JLabel("Semester ID");
 		lblId.setHorizontalAlignment(SwingConstants.CENTER);
 		lblId.setForeground(Color.BLACK);
-		lblId.setFont(new Font("Chilanka", Font.BOLD, 15));
+		lblId.setFont(new Font("Chilanka", Font.BOLD, 17));
 		lblId.setBounds(0, 2, 97, 50);
 		forminput_1_2.add(lblId);
 		
@@ -137,7 +137,7 @@ public class Semester extends JPanel {
 		textID.setHorizontalAlignment(SwingConstants.CENTER);
 		textID.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textID.setColumns(10);
-		textID.setBorder(null);
+		textID.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textID.setBounds(98, 11, 169, 26);
 		forminput_1_2.add(textID);
 		
@@ -151,7 +151,7 @@ public class Semester extends JPanel {
 		JLabel lblName = new JLabel("Subname");
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName.setForeground(Color.BLACK);
-		lblName.setFont(new Font("Chilanka", Font.BOLD, 15));
+		lblName.setFont(new Font("Chilanka", Font.BOLD, 17));
 		lblName.setBounds(0, 3, 88, 50);
 		forminput_1.add(lblName);
 		
@@ -160,7 +160,7 @@ public class Semester extends JPanel {
 		textSubname.setHorizontalAlignment(SwingConstants.CENTER);
 		textSubname.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textSubname.setColumns(10);
-		textSubname.setBorder(null);
+		textSubname.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textSubname.setBounds(82, 12, 176, 26);
 		forminput_1.add(textSubname);
 		
@@ -199,8 +199,8 @@ public class Semester extends JPanel {
 		JLabel lblFullname = new JLabel("Year");
 		lblFullname.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFullname.setForeground(Color.BLACK);
-		lblFullname.setFont(new Font("Chilanka", Font.BOLD, 15));
-		lblFullname.setBounds(0, 2, 78, 50);
+		lblFullname.setFont(new Font("Chilanka", Font.BOLD, 17));
+		lblFullname.setBounds(0, 2, 97, 50);
 		forminput_1_3.add(lblFullname);
 		
 		textYear = new JTextField();
@@ -208,8 +208,8 @@ public class Semester extends JPanel {
 		textYear.setHorizontalAlignment(SwingConstants.CENTER);
 		textYear.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textYear.setColumns(10);
-		textYear.setBorder(null);
-		textYear.setBounds(81, 11, 186, 26);
+		textYear.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		textYear.setBounds(98, 11, 170, 26);
 		forminput_1_3.add(textYear);
 		
 		JPanel forminput_1_4 = new JPanel();
@@ -222,13 +222,13 @@ public class Semester extends JPanel {
 		JLabel lblName_1 = new JLabel("Start Day");
 		lblName_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName_1.setForeground(new Color(0, 128, 0));
-		lblName_1.setFont(new Font("Chilanka", Font.BOLD, 15));
-		lblName_1.setBounds(0, 3, 88, 50);
+		lblName_1.setFont(new Font("Chilanka", Font.BOLD, 17));
+		lblName_1.setBounds(0, 3, 99, 50);
 		forminput_1_4.add(lblName_1);
 		
 		startDay = new JDateChooser();
 		startDay.setBorder(null);
-		startDay.setBounds(82, 12, 185, 26);
+		startDay.setBounds(98, 12, 170, 26);
 		startDay.setDateFormatString("dd-MM-yyyy");
 		forminput_1_4.add(startDay);
 		
@@ -242,7 +242,7 @@ public class Semester extends JPanel {
 		JLabel lblName_2 = new JLabel("End Day");
 		lblName_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName_2.setForeground(new Color(255, 0, 0));
-		lblName_2.setFont(new Font("Chilanka", Font.BOLD, 15));
+		lblName_2.setFont(new Font("Chilanka", Font.BOLD, 17));
 		lblName_2.setBounds(0, 3, 88, 50);
 		forminput_1_5.add(lblName_2);
 		
