@@ -477,6 +477,7 @@ public class Admin extends JFrame {
 		buttons.add(btnStudent);
 		buttons.add(btnAccount);
 		buttons.add(btnLogout);
+		buttons.add(btnRegister);
 		
 		for (JButton btn: buttons) {
 			btn.addMouseListener(new MouseListener() {
@@ -528,6 +529,7 @@ public class Admin extends JFrame {
 		buttons.add(btnStudent);
 		buttons.add(btnAccount);
 		buttons.add(btnLogout);
+		buttons.add(btnRegister);
 		
 		for (JButton btn: buttons) {
 			if (_choice == btn) {

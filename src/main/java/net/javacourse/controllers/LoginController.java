@@ -2,6 +2,9 @@ package net.javacourse.controllers;
 
 import java.awt.EventQueue;
 import javax.swing.JButton;
+
+import org.hibernate.cfg.Configuration;
+
 import net.javacourse.entities.Students;
 import net.javacourse.entities.Trainers;
 import net.javacourse.models.LoginModel;
@@ -42,6 +45,27 @@ public class LoginController {
 		JButton click = _view.getBtnLogin();
 		
 		click.addActionListener(e -> {
+			String Dusername = _view.getDUn().trim();
+			String Dpassword = _view.getDPw().trim();
+			
+			if (Dusername.isEmpty()) {
+				_view.getErrorUn().setText("Please enter the Database username!");
+			} else if (Dpassword.isEmpty()) {
+				_view.getErrorPw().setText("Please enter the Database password!");
+			} else {
+				try {
+					Configuration cfg = new Configuration();
+					cfg.configure();
+					cfg.setProperty("hibernate.connection.password", Dpassword);
+					cfg.setProperty("hibernate.connection.username", Dusername);
+
+				} catch (Throwable ex) {
+					_view.getErrorUn().setText("Unable to conect database! Try again!");
+					System.err.println("Initial SessionFactory creation failed." + ex);
+					throw new ExceptionInInitializerError(ex);
+				};
+			};
+			
 			String username = _view.getUsername().trim();
 			String password = _view.getPassword().trim();
 			

@@ -70,7 +70,6 @@ public class RegisterList extends JPanel {
 	/* View component */
 	private JTable table;
 	private JPanel header;
-	private JLabel message;
 	private JTextField textRoom;
 	private JTextField textSID;
 
@@ -200,7 +199,7 @@ public class RegisterList extends JPanel {
 		forminput_1_5_1_2.setLayout(null);
 		forminput_1_5_1_2.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_5_1_2.setBackground(new Color(119, 165, 251));
-		forminput_1_5_1_2.setBounds(349, 136, 156, 50);
+		forminput_1_5_1_2.setBounds(354, 136, 156, 50);
 		input.add(forminput_1_5_1_2);
 		
 		JLabel lblTelephone = new JLabel("Shift");
@@ -223,7 +222,7 @@ public class RegisterList extends JPanel {
 		forminput_1_5_1_3.setLayout(null);
 		forminput_1_5_1_3.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_5_1_3.setBackground(new Color(119, 165, 251));
-		forminput_1_5_1_3.setBounds(522, 136, 168, 50);
+		forminput_1_5_1_3.setBounds(536, 136, 168, 50);
 		input.add(forminput_1_5_1_3);
 		
 		JLabel lblCitizenId = new JLabel("Room");
@@ -246,7 +245,7 @@ public class RegisterList extends JPanel {
 		forminput_1_2_1_1_1_1.setLayout(null);
 		forminput_1_2_1_1_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2_1_1_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_2_1_1_1_1.setBounds(172, 74, 259, 50);
+		forminput_1_2_1_1_1_1.setBounds(172, 74, 308, 50);
 		input.add(forminput_1_2_1_1_1_1);
 		
 		JLabel Name_1_1_1 = new JLabel("Course");
@@ -262,21 +261,21 @@ public class RegisterList extends JPanel {
 		textCourse.setFont(new Font("Arial", Font.BOLD, 20));
 		textCourse.setColumns(10);
 		textCourse.setBorder(null);
-		textCourse.setBounds(88, 15, 164, 26);
+		textCourse.setBounds(88, 15, 208, 26);
 		forminput_1_2_1_1_1_1.add(textCourse);
 		
 		JPanel forminput_1_2_1_1_2 = new JPanel();
 		forminput_1_2_1_1_2.setLayout(null);
 		forminput_1_2_1_1_2.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2_1_1_2.setBackground(new Color(119, 165, 251));
-		forminput_1_2_1_1_2.setBounds(172, 12, 222, 50);
+		forminput_1_2_1_1_2.setBounds(172, 12, 308, 50);
 		input.add(forminput_1_2_1_1_2);
 		
-		JLabel Name_1_2 = new JLabel("ID");
+		JLabel Name_1_2 = new JLabel("MSSV");
 		Name_1_2.setHorizontalAlignment(SwingConstants.CENTER);
 		Name_1_2.setForeground(Color.BLACK);
 		Name_1_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-		Name_1_2.setBounds(0, 2, 65, 50);
+		Name_1_2.setBounds(0, 2, 81, 50);
 		forminput_1_2_1_1_2.add(Name_1_2);
 		
 		textID = new JTextField();
@@ -285,14 +284,14 @@ public class RegisterList extends JPanel {
 		textID.setFont(new Font("Arial", Font.BOLD, 20));
 		textID.setColumns(10);
 		textID.setBorder(null);
-		textID.setBounds(62, 15, 148, 26);
+		textID.setBounds(88, 15, 208, 26);
 		forminput_1_2_1_1_2.add(textID);
 		
 		JPanel forminput_1_2_1_1_1_2 = new JPanel();
 		forminput_1_2_1_1_1_2.setLayout(null);
 		forminput_1_2_1_1_1_2.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2_1_1_1_2.setBackground(new Color(119, 165, 251));
-		forminput_1_2_1_1_1_2.setBounds(406, 12, 294, 50);
+		forminput_1_2_1_1_1_2.setBounds(492, 12, 322, 50);
 		input.add(forminput_1_2_1_1_1_2);
 		
 		JLabel Name_1_1_2 = new JLabel("Fullname");
@@ -308,14 +307,14 @@ public class RegisterList extends JPanel {
 		textName.setFont(new Font("Arial", Font.BOLD, 20));
 		textName.setColumns(10);
 		textName.setBorder(null);
-		textName.setBounds(88, 15, 194, 26);
+		textName.setBounds(88, 15, 222, 26);
 		forminput_1_2_1_1_1_2.add(textName);
 		
 		JPanel forminput_1_2_1_1_1_1_1 = new JPanel();
 		forminput_1_2_1_1_1_1_1.setLayout(null);
 		forminput_1_2_1_1_1_1_1.setPreferredSize(new Dimension(1000, 50));
 		forminput_1_2_1_1_1_1_1.setBackground(new Color(119, 165, 251));
-		forminput_1_2_1_1_1_1_1.setBounds(441, 74, 259, 50);
+		forminput_1_2_1_1_1_1_1.setBounds(492, 74, 322, 50);
 		input.add(forminput_1_2_1_1_1_1_1);
 		
 		JLabel Name_1_1_1_1 = new JLabel("Teacher");
@@ -331,7 +330,7 @@ public class RegisterList extends JPanel {
 		textTeacher.setFont(new Font("Arial", Font.BOLD, 20));
 		textTeacher.setColumns(10);
 		textTeacher.setBorder(null);
-		textTeacher.setBounds(88, 15, 164, 26);
+		textTeacher.setBounds(88, 15, 222, 26);
 		forminput_1_2_1_1_1_1_1.add(textTeacher);
 		
 		/* Manipulating data */
@@ -413,8 +412,8 @@ public class RegisterList extends JPanel {
 	private void setEventButton() {
 		/* Only one checkbox is selected on time */
 		btnFilter.addActionListener(e -> {
-			String id = textID.getText().trim();
-			String name = textName.getText().trim();
+			String id = textSID.getText();
+			String name = textSName.getText();
 			
 			List<Studies> registerList = _model.getAll();
 			
@@ -446,7 +445,7 @@ public class RegisterList extends JPanel {
 				Students student = register.getStudents();
 				Schedules schedule = register.getSchedules();
 				
-				if (student.getFullname().equals(name) || student.getStudentId().equals(id)) {
+				if (student.getStudentId().equals(id) || student.getFullname().equals(name)) {
 					row.add(student.getStudentId());
 					row.add(student.getFullname());
 					row.add(schedule.getCourses().getName());

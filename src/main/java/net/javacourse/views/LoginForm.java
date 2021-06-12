@@ -47,6 +47,8 @@ public class LoginForm extends JFrame {
 	private JButton btnCancel;
 
 	private JProgressBar bar;
+	private JTextField textDUn;
+	private JTextField textDPw;
 
 	/**
 	 * Constructor
@@ -64,7 +66,7 @@ public class LoginForm extends JFrame {
 	private void initialView() {
 		this.setCloseApp();
 		
-		setBounds(250, 150, 800, 400);
+		setBounds(250, 100, 800, 525);
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -136,7 +138,7 @@ public class LoginForm extends JFrame {
 		JPanel popup = new JPanel();
 		popup.setBorder(new RadiusBorder(Color.white, 2, 16, 16));
 		popup.setBackground(Color.WHITE);
-		popup.setBounds(25, 22, 401, 328);
+		popup.setBounds(25, 22, 401, 465);
 		signin.add(popup);
 		popup.setLayout(null);
 		
@@ -240,6 +242,42 @@ public class LoginForm extends JFrame {
 		errorPw.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		errorPw.setBounds(150, 161, 219, 32);
 		popup.add(errorPw);
+		
+		JLabel lblDbUsername = new JLabel("Username");
+		lblDbUsername.setForeground(Color.BLACK);
+		lblDbUsername.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		lblDbUsername.setBounds(33, 362, 98, 32);
+		popup.add(lblDbUsername);
+		
+		textDUn = new JTextField();
+		textDUn.setFont(new Font("Chandas", Font.PLAIN, 16));
+		textDUn.setColumns(10);
+		textDUn.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		textDUn.setBackground(Color.WHITE);
+		textDUn.setBounds(139, 360, 230, 32);
+		popup.add(textDUn);
+		
+		JLabel lblDbPassword = new JLabel("Password");
+		lblDbPassword.setForeground(Color.BLACK);
+		lblDbPassword.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		lblDbPassword.setBounds(33, 408, 98, 32);
+		popup.add(lblDbPassword);
+		
+		textDPw = new JTextField();
+		textDPw.setFont(new Font("Chandas", Font.PLAIN, 16));
+		textDPw.setColumns(10);
+		textDPw.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		textDPw.setBackground(Color.WHITE);
+		textDPw.setBounds(139, 406, 230, 32);
+		popup.add(textDPw);
+		
+		JLabel lblConnectDatabase = new JLabel("Connect database");
+		lblConnectDatabase.setHorizontalAlignment(SwingConstants.CENTER);
+		lblConnectDatabase.setForeground(Color.BLACK);
+		lblConnectDatabase.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+		lblConnectDatabase.setBackground(Color.BLACK);
+		lblConnectDatabase.setBounds(28, 313, 350, 37);
+		popup.add(lblConnectDatabase);
 	}
 	
 	/**
@@ -372,5 +410,21 @@ public class LoginForm extends JFrame {
 	 */
 	public JPanel getContentPane() {
 		return contentPane;
+	}
+	
+	public String getDUn() {
+		return textDUn.getText();
+	}
+
+	public void setTextDUn(JTextField textDUn) {
+		this.textDUn = textDUn;
+	}
+
+	public String getDPw() {
+		return textDPw.getText();
+	}
+
+	public void setTextDPw(JTextField textDPw) {
+		this.textDPw = textDPw;
 	}
 }
