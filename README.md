@@ -1,10 +1,13 @@
 # Course Registration System
 
-** Lập trình Ứng dụng Java
+** LẬP TRÌNH ỨNG DỤNG JAVA 
+
 * Họ và tên: Nguyễn Nhật Duy
 * MSSV: 19120495
 
 Sau đây là phần demo các chức năng của ứng dụng quản lí học phần:
+Xin phép bắt đầu
+
 
 * Chức năng chung: 
   - Giáo vụ đăng nhập, sửa thông tin, mật khẩu.
@@ -29,3 +32,7 @@ CHỨC NĂNG SINH VIÊN:
 * Chức năng 1: Đăng kí học phần (Không được trùng thời gian).
 * Chức năng 2: Xem các học phần đã đăng kí.
 * Chức năng 3: Xóa học phần nếu còn hạn đăng kí.
+
+Và đó là hoàn thành phần demo ứng dụng của em
+Cảm ơn thầy đã lắng nghe
+
