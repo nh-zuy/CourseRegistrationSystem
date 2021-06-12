@@ -1,5 +1,5 @@
 package net.javacourse.entities;
-// Generated 4 Jun 2021, 21:42:10 by Hibernate Tools 5.4.30.Final
+// Generated 12 Jun 2021, 09:55:29 by Hibernate Tools 5.4.30.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,23 +14,26 @@ public class Schedules implements java.io.Serializable {
 	private String day;
 	private int shift;
 	private String room;
+	private String teacher;
 	private Set studieses = new HashSet(0);
 
 	public Schedules() {
 	}
 
-	public Schedules(Courses courses, String day, int shift, String room) {
+	public Schedules(Courses courses, String day, int shift, String room, String teacher) {
 		this.courses = courses;
 		this.day = day;
 		this.shift = shift;
 		this.room = room;
+		this.teacher = teacher;
 	}
 
-	public Schedules(Courses courses, String day, int shift, String room, Set studieses) {
+	public Schedules(Courses courses, String day, int shift, String room, String teacher, Set studieses) {
 		this.courses = courses;
 		this.day = day;
 		this.shift = shift;
 		this.room = room;
+		this.teacher = teacher;
 		this.studieses = studieses;
 	}
 
@@ -72,6 +75,14 @@ public class Schedules implements java.io.Serializable {
 
 	public void setRoom(String room) {
 		this.room = room;
+	}
+
+	public String getTeacher() {
+		return this.teacher;
+	}
+
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
 	}
 
 	public Set getStudieses() {

@@ -121,6 +121,7 @@ public class CourseStudent extends JPanel {
 		headers.add("Day");
 		headers.add("Shift");
 		headers.add("Room");
+		headers.add("Teacher");
 
 		for (Studies study: this._studies) {
 			/* ID */
@@ -134,6 +135,7 @@ public class CourseStudent extends JPanel {
 			row.add(schedule.getDay());
 			row.add(String.valueOf(schedule.getShift()));
 			row.add(schedule.getRoom());
+			row.add(schedule.getTeacher());
 
 			data.add(new Vector<String>(row));
 			row.clear();

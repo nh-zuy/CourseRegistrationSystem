@@ -65,6 +65,8 @@ public class Admin extends JFrame {
 	private JButton btnSchedule;
 
 	private JButton btnSession;
+
+	private JButton btnRegister;
 	
 
 	/**
@@ -143,7 +145,7 @@ public class Admin extends JFrame {
 		btnLogout.setFocusPainted(false);
 		btnLogout.setBorder(null);
 		btnLogout.setBackground(new Color(23, 33, 53));
-		btnLogout.setBounds(0, 418, 150, 53);
+		btnLogout.setBounds(0, 481, 150, 53);
 		nav.add(btnLogout);
 		
 		btnStudent = new JButton("Students");
@@ -154,6 +156,15 @@ public class Admin extends JFrame {
 		btnStudent.setBackground(new Color(23, 33, 53));
 		btnStudent.setBounds(0, 284, 150, 53);
 		nav.add(btnStudent);
+		
+		btnRegister = new JButton("Register List");
+		btnRegister.setForeground(Color.WHITE);
+		btnRegister.setFont(new Font("AnjaliOldLipi", Font.PLAIN, 16));
+		btnRegister.setFocusPainted(false);
+		btnRegister.setBorder(null);
+		btnRegister.setBackground(new Color(23, 33, 53));
+		btnRegister.setBounds(0, 416, 150, 53);
+		nav.add(btnRegister);
 
 		/**
 		 * The top of the frame: Header
@@ -426,6 +437,13 @@ public class Admin extends JFrame {
 		btnSession.addActionListener(e -> {
 			workspace.removeAll();
 			workspace.add(new Session());
+			workspace.validate();
+			workspace.repaint();
+		});
+		
+		btnRegister.addActionListener(e -> {
+			workspace.removeAll();
+			workspace.add(new RegisterList());
 			workspace.validate();
 			workspace.repaint();
 		});

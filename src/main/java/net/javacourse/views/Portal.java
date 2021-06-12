@@ -210,6 +210,8 @@ public class Portal extends JPanel {
 				case 4:
 					return String.class;
 				case 5:
+					return String.class;
+				case 6:
 					return Boolean.class;
 				default:
 					return String.class;
@@ -224,20 +226,22 @@ public class Portal extends JPanel {
 		model.addColumn("Day");
 		model.addColumn("Shift");
 		model.addColumn("Room");
+		model.addColumn("Teacher");
 		model.addColumn("Register");
 		
 		for (int i = 0; i < schedules.size(); ++i) {
-			model.addRow(new Object[0]);
+			 model.addRow(new Object[0]);
 			 model.setValueAt(schedules.get(i).getId().toString(), i, 0);
 			 model.setValueAt(schedules.get(i).getCourses().getName() + " (" + schedules.get(i).getCourses().getCode() + ")", i, 1);
 			 model.setValueAt(schedules.get(i).getDay(), i, 2);
 			 model.setValueAt(String.valueOf(schedules.get(i).getShift()), i, 3);
 			 model.setValueAt(schedules.get(i).getRoom(), i, 4);
+			 model.setValueAt(schedules.get(i).getTeacher(), i, 5);
 			 
 			 if (schedule.contains(schedules.get(i).getId())) {
-				 model.setValueAt(true, i, 5);
+				 model.setValueAt(true, i, 6);
 			 } else {
-				 model.setValueAt(false, i, 5);
+				 model.setValueAt(false, i, 6);
 			 };
 		};
 		
@@ -274,7 +278,7 @@ public class Portal extends JPanel {
 			List<String> courses = new ArrayList<String>();
 			
 			for (int i = 0; i < table.getRowCount(); ++i) {
-				Boolean checked = Boolean.valueOf(table.getValueAt(i, 5).toString());
+				Boolean checked = Boolean.valueOf(table.getValueAt(i, 6).toString());
 		        
 		        if (checked) {
 		        	String id = table.getValueAt(i, 0).toString();

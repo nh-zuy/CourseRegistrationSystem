@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="course_registration" match-name="classes"/>
+  <table-filter match-catalog="course_registration" match-name="courses"/>
+  <table-filter match-catalog="course_registration" match-name="current_sem"/>
+  <table-filter match-catalog="course_registration" match-name="previleges"/>
+  <table-filter match-catalog="course_registration" match-name="schedules"/>
+  <table-filter match-catalog="course_registration" match-name="semesters"/>
+  <table-filter match-catalog="course_registration" match-name="sessions"/>
+  <table-filter match-catalog="course_registration" match-name="students"/>
+  <table-filter match-catalog="course_registration" match-name="studies"/>
+  <table-filter match-catalog="course_registration" match-name="trainers"/>
+</hibernate-reverse-engineering>

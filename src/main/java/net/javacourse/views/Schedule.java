@@ -83,6 +83,7 @@ public class Schedule extends JPanel {
 	private JComboBox<String> boxDay;
 
 	private JComboBox<String> boxShift;
+	private JTextField textTeacher;
 
 	
 	/**
@@ -304,6 +305,30 @@ public class Schedule extends JPanel {
 		lblNewLabel_1.setBounds(225, 0, 437, 57);
 		input.add(lblNewLabel_1);
 		
+		JPanel forminput_1_2_1_1_1_1 = new JPanel();
+		forminput_1_2_1_1_1_1.setLayout(null);
+		forminput_1_2_1_1_1_1.setPreferredSize(new Dimension(1000, 50));
+		forminput_1_2_1_1_1_1.setBackground(new Color(119, 165, 251));
+		forminput_1_2_1_1_1_1.setBounds(270, 193, 347, 50);
+		input.add(forminput_1_2_1_1_1_1);
+		
+		JLabel Name_1_1_1 = new JLabel("Teacher");
+		Name_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		Name_1_1_1.setForeground(Color.BLACK);
+		Name_1_1_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		Name_1_1_1.setBounds(0, 2, 92, 50);
+		forminput_1_2_1_1_1_1.add(Name_1_1_1);
+		
+		textTeacher = new JTextField();
+		textTeacher.setText("");
+		textTeacher.setHorizontalAlignment(SwingConstants.CENTER);
+		textTeacher.setFont(new Font("Arial", Font.BOLD, 20));
+		textTeacher.setEditable(false);
+		textTeacher.setColumns(10);
+		textTeacher.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		textTeacher.setBounds(89, 15, 246, 26);
+		forminput_1_2_1_1_1_1.add(textTeacher);
+		
 		/* Manipulating data */
 		this.resetTextField();
 		this.setData();
@@ -336,6 +361,7 @@ public class Schedule extends JPanel {
 		headers.add("Day");
 		headers.add("Shift");
 		headers.add("Room");
+		headers.add("Teacher");
 
 		for (Schedules schedule: schedules) {
 			row.add(schedule.getId().toString());
@@ -343,6 +369,7 @@ public class Schedule extends JPanel {
 			row.add(schedule.getDay());
 			row.add(String.valueOf(schedule.getShift()));
 			row.add(schedule.getRoom());
+			row.add(schedule.getTeacher());
 			
 			data.add(new Vector<String>(row));
 			row.clear();
@@ -417,6 +444,7 @@ public class Schedule extends JPanel {
 					row.add(schedule.getDay());
 					row.add(String.valueOf(schedule.getShift()));
 					row.add(schedule.getRoom());
+					row.add(schedule.getTeacher());
 
 					tableModel.addRow(new Vector<String>(row));
 					row.clear();
@@ -434,7 +462,8 @@ public class Schedule extends JPanel {
 					row.add(schedule.getDay());
 					row.add(String.valueOf(schedule.getShift()));
 					row.add(schedule.getRoom());
-
+					row.add(schedule.getTeacher());
+					
 					tableModel.addRow(new Vector<String>(row));
 					row.clear();
 				};
@@ -448,9 +477,11 @@ public class Schedule extends JPanel {
 				String day = (String)boxDay.getSelectedItem().toString();
 				String tShift = boxShift.getSelectedItem().toString().trim();
 				String room = textRoom.getText().trim();
+				String teacher = textTeacher.getText().trim();
 				String tCourse = (String)boxCourse.getSelectedItem();
 				
-				if (day.isBlank() || tShift.isBlank() || room.isBlank() || tCourse.isBlank()) {
+				
+				if (day.isBlank() || tShift.isBlank() || room.isBlank() || teacher.isBlank() || tCourse.isBlank()) {
 					JOptionPane.showMessageDialog(new JPanel(), "Please fill blank!", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
 					String[] options = { "Yes", "No" };
@@ -465,12 +496,13 @@ public class Schedule extends JPanel {
 						data.setShift(Integer.parseInt(tShift));
 						data.setDay(day);
 						data.setRoom(room);
+						data.setTeacher(teacher);
 						
 						int insertedId = _model.add(data);
 						
 						if (insertedId != -1) {
 							DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-							String row[] = {String.valueOf(insertedId), tCourse, day, tShift, room};
+							String row[] = {String.valueOf(insertedId), tCourse, day, tShift, room, teacher};
 							tableModel.addRow(row);
 							
 							table.validate();
@@ -517,6 +549,7 @@ public class Schedule extends JPanel {
 			String day = (String)boxDay.getSelectedItem().toString();
 			String tShift = boxShift.getSelectedItem().toString().trim();
 			String room = textRoom.getText().trim();
+			String teacher = textTeacher.getText().trim();
 			String tCourse = (String)boxCourse.getSelectedItem();
 			String code = Helper.parseCode(tCourse);
 			
@@ -537,6 +570,7 @@ public class Schedule extends JPanel {
 					data.setShift(Integer.parseInt(tShift));
 					data.setDay(day);
 					data.setRoom(room);
+					data.setTeacher(teacher);
 					
 					if (_model.updateById(tid, data)) {
 						DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
@@ -546,6 +580,7 @@ public class Schedule extends JPanel {
 						tableModel.setValueAt(day, table.getSelectedRow(), 2);
 						tableModel.setValueAt(tShift, table.getSelectedRow(), 3);
 						tableModel.setValueAt(room, table.getSelectedRow(), 4);
+						tableModel.setValueAt(teacher, table.getSelectedRow(), 5);
 						
 						JOptionPane.showMessageDialog(new JPanel(), "Update Successfully!", "Update", JOptionPane.INFORMATION_MESSAGE);
 					} else {
@@ -611,12 +646,14 @@ public class Schedule extends JPanel {
 				String day = table.getValueAt(table.getSelectedRow(), 2).toString();
 				String shift = table.getValueAt(table.getSelectedRow(), 3).toString();
 				String room = table.getValueAt(table.getSelectedRow(), 4).toString();
+				String teacher = table.getValueAt(table.getSelectedRow(), 5).toString();
 				
 				textID.setText(id);
 				boxCourse.setSelectedItem(course);
 				boxDay.setSelectedItem(day);
 				boxShift.setSelectedItem(shift);
 				textRoom.setText(room);
+				textTeacher.setText(teacher);
 			}
 
 			@Override

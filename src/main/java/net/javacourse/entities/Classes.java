@@ -1,5 +1,5 @@
 package net.javacourse.entities;
-// Generated 4 Jun 2021, 21:42:10 by Hibernate Tools 5.4.30.Final
+// Generated 12 Jun 2021, 09:55:29 by Hibernate Tools 5.4.30.Final
 
 import java.util.HashSet;
 import java.util.Set;
